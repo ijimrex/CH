@@ -1,0 +1,35 @@
+#whole-background{
+    width: 100%;
+    position: relative;
+}
+#headbar{
+    width: 100%;
+    position: relative;
+
+}
+#tags{
+    width: 100%;
+    position: relative;
+    border-bottom: solid;
+    border-color: #337ab7;
+    border-width: 2px;
+}
+.subtag{
+    border-radius: 0px;
+}
+.result1{
+    width: 100%;
+    position: relative;
+    /*display: none;*/
+}
+#progressbar{
+    position: relative;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 11%;
+    display: none;
+}
+.tab-content{
+    display: none;
+}

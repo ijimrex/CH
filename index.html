@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FB search</title>
+    <link rel="stylesheet" href="fb.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<div id="whole-background" ng-app="myApp" ng-controller="fbController">
+    <div id="headbar">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img alt="FB Search" src="...">
+                </a>
+                <form class="navbar-form navbar-left" role="search" >
+                    <div class="form-group" style="width: 300px">
+                        <input ng-model="keyword" type="text" class="form-control" placeholder="Search" style="border-radius: 0px;width:100%">
+                    </div>
+                    <button type="submit" class="btn btn-primary"style="border-radius: 0px" ng-click="search()">&nbsp;&nbsp; <span class="glyphicon glyphicon-search" aria-hidden="true">&nbsp;</span></button>
+                    <button type="submit" class="btn btn-default"style="border-radius: 0px" ng-click="reset()" >Clear</button>
+                </form>
+            </div>
+        </nav>
+    </div>
+    <div id="tags">
+        <ul class="nav nav-pills nav-justified" role="tablist" >
+            <li class="active" style="border-radius: 0px" id="tuser"role="presentation"><a style="border-radius: 0px" href="#user" data-toggle="tab">Users</a></li>
+            <li role="presentation"><a href="#page" style="border-radius: 0px" id="tpage" data-toggle="tab">Pages</a></li>
+            <li role="presentation"><a href="#event" style="border-radius: 0px" id="tevent" data-toggle="tab">Events</a></li>
+            <li role="presentation"><a href="#place" style="border-radius: 0px" id="tplace" data-toggle="tab">Places</a></li>
+            <li role="presentation"><a href="#group" style="border-radius: 0px" id="tgroup" data-toggle="tab">Groups</a></li>
+            <li role="presentation"><a href="#favourite" style="border-radius: 0px" id="tfavourite" data-toggle="tab">Favourites</a></li>
+        </ul>
+    </div>
+
+
+    <!--{{keyword}}-->
+    <!--{{lat}}-->
+    <div class="progress"  id ='progressbar'>
+        <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+            <span class="sr-only">60% Complete</span>
+        </div>
+    </div>
+<!--user-->
+    <div class="tab-content" id="tc">
+    <div id="user" class="tab-pane fade in active">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Profile Photo</th>
+                  <th>Name</th>
+                <th>Favourite</th>
+                <th>Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr ng-repeat="user in users">
+                <td>{{user.num}}</td>
+                <td><img src="{{user.picurl}}"  class="img-circle" style="width: 64px;height: 64px"></td>
+                <td>{{ user.name }}</td>
+                <td><button class="btn btn-default" type="button" ><span class="glyphicon glyphicon-star-empty"></span></button></td>
+                <td><button class="btn btn-default" type="button>"><span class="glyphicon glyphicon-chevron-right"></span></button></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <ul class="pager">
+            <li><a href="#user">Previous</a></li>
+            <li><a href="#user">Next</a></li>
+        </ul>
+<!--page-->
+
+    <div id="page"  class="tab-pane fade">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Profile Photo</th>
+                <th>Name</th>
+                <th>Favourite</th>
+                <th>Details</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="page in pages">
+                <td>{{page.num}}</td>
+                <td><img src="{{page.picurl}}"  class="img-circle" style="width: 64px;height: 64px"></td>
+                <td>{{ page.name }}</td>
+                <td><button class="btn btn-default" type="button" ><span class="glyphicon glyphicon-star-empty"></span></button></td>
+                <td><button class="btn btn-default" type="button>"><span class="glyphicon glyphicon-chevron-right"></span></button></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+<!--event-->
+    <div id="event" class="tab-pane fade">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Profile Photo</th>
+                <th>Name</th>
+                <th>Favourite</th>
+                <th>Details</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="event in events">
+                <td>{{event.num}}</td>
+                <td><img src="{{event.picurl}}"  class="img-circle" style="width: 64px;height: 64px"></td>
+                <td>{{ event.name }}</td>
+                <td><button class="btn btn-default" type="button" ><span class="glyphicon glyphicon-star-empty"></span></button></td>
+                <td><button class="btn btn-default" type="button>"><span class="glyphicon glyphicon-chevron-right"></span></button></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+<!--place-->
+    <div id="place" class="tab-pane fade">
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Profile Photo</th>
+                <th>Name</th>
+                <th>Favourite</th>
+                <th>Details</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="place in places">
+                <td>{{place.num}}</td>
+                <td><img src="{{place.picurl}}"  class="img-circle" style="width: 64px;height: 64px"></td>
+                <td>{{ place.name }}</td>
+                <td><button class="btn btn-default" type="button" ><span class="glyphicon glyphicon-star-empty"></span></button></td>
+                <td><button class="btn btn-default" type="button>"><span class="glyphicon glyphicon-chevron-right"></span></button></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+<!--group        -->
+    <div id="group" class="tab-pane fade">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Profile Photo</th>
+                <th>Name</th>
+                <th>Favourite</th>
+                <th>Details</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="group in groups">
+                <td>{{group.num}}</td>
+                <td><img src="{{group.picurl}}"  class="img-circle" style="width: 64px;height: 64px"></td>
+                <td>{{ group.name }}</td>
+                <td><button class="btn btn-default" type="button" ><span class="glyphicon glyphicon-star-empty"></span></button></td>
+                <td><button class="btn btn-default" type="button>"><span class="glyphicon glyphicon-chevron-right"></span></button></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+<!--facourite        -->
+    <div id="favourite" class="tab-pane fade" ></div>
+</div>
+</div>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('fbController', function($scope,$http) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            $scope.lat=position.coords.latitude;
+            $scope.long=position.coords.longitude;;
+        });
+
+        $scope.keyword ="";
+//        $scope.urls='fb.php?keyword='+$scope.keyword+'&lat='+$scope.lat+'&long='+$scope.long;
+        $scope.users=""
+        $scope.pages=""
+        $scope.events=""
+        $scope.groups=""
+        $scope.places=""
+        $scope.userpage=""
+        $scope.pagepage=""
+        $scope.eventpage=""
+        $scope.grouppage=""
+        $scope.placepage=""
+        $scope.reset=function (){
+            $scope.keyword =""
+        }
+        function parseData(data) {
+//            console.log(data)
+            var temp=Array()
+            var len=data.length;
+            for (var i=0;i<len;i++){
+                temp.push({
+                    num: i+1,
+                    id: data[i]['id'],
+                    name: data[i]['name'],
+                    picurl: data[i]['picture']['data']['url'],
+                })
+            }
+            return temp
+        }
+
+        function show(id){
+            document.getElementById(id).style.display='block'
+
+        }
+        function hide(id){
+            document.getElementById(id).style.display='none'
+
+        }
+
+
+        $scope.search=function () {
+            hide('tc')
+            show('progressbar')
+            $http({
+                method: 'GET',
+                url: 'fb.php?keyword='+$scope.keyword+'&lat='+$scope.lat+'&long='+$scope.long
+            }).then(function successCallback(response) {
+//                console.log(response['data']['user']['data'])
+                $scope.users=parseData(response['data']['user']['data'])
+                $scope.events=parseData(response['data']['event']['data'])
+                $scope.pages=parseData(response['data']['page']['data'])
+                $scope.places=parseData(response['data']['place']['data'])
+                $scope.groups=parseData(response['data']['group']['data'])
+
+                hide('progressbar')
+                show('tc')
+
+            }, function errorCallback(response) {
+                console.log('http error')
+            });
+        }
+
+
+    });
+</script>
+</body>
+</html>
