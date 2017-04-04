@@ -107,8 +107,8 @@
                 <td>{{ page.name }}</td>
                 <td><button class="btn btn-default" type="button"   ng-click="storage(page.id,'page',page)">
 
-                    <span ng-if="jg(page.id)"class="glyphicon glyphicon-star" id="{{page.id}}" style="color: gold; "> </span>
-                    <span ng-if="!jg(page.id)" class="glyphicon glyphicon-star-empty" id="{{page.id}}"> </span>
+                    <span ng-if="page.favored"class="glyphicon glyphicon-star" id="{{page.id}}" style="color: gold; "> </span>
+                    <span ng-if="!page.favored" class="glyphicon glyphicon-star-empty" id="{{page.id}}"> </span>
                 </button></td>
                 <td><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
             </tr>
@@ -141,9 +141,8 @@
                 <td><img src="{{event.picurl}}"  class="img-circle" style="width: 64px;height: 64px"></td>
                 <td>{{ event.name }}</td>
                 <td><button class="btn btn-default" type="button"   ng-click="storage(event.id,'event',event)">
-
-                    <span ng-if="jg(event.id)"class="glyphicon glyphicon-star" id="{{event.id}}" style="color: gold; "> </span>
-                    <span ng-if="!jg(event.id)" class="glyphicon glyphicon-star-empty" id="{{event.id}}"> </span>
+                    <span ng-if="event.favored"class="glyphicon glyphicon-star" id="{{event.id}}" style="color: gold; "> </span>
+                    <span ng-if="!event.favored" class="glyphicon glyphicon-star-empty" id="{{event.id}}"> </span>
                 </button></td>
                 <td><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
             </tr>
@@ -176,8 +175,8 @@
                 <td>{{ place.name }}</td>
                 <td><button class="btn btn-default" type="button"   ng-click="storage(place.id,'place',place)">
 
-                    <span ng-if="jg(place.id)"class="glyphicon glyphicon-star" id="{{place.id}}" style="color: gold; "> </span>
-                    <span ng-if="!jg(place.id)" class="glyphicon glyphicon-star-empty" id="{{place.id}}"> </span>
+                    <span ng-if="place.favored"class="glyphicon glyphicon-star" id="{{place.id}}" style="color: gold; "> </span>
+                    <span ng-if="!place.favored" class="glyphicon glyphicon-star-empty" id="{{place.id}}"> </span>
                 </button></td>
                 <td><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
             </tr>
@@ -208,8 +207,8 @@
                 <td>{{ group.name }}</td>
                 <td><button class="btn btn-default" type="button"   ng-click="storage(group.id,'group',group)">
 
-                    <span ng-if="jg(group.id)"class="glyphicon glyphicon-star" id="{{group.id}}" style="color: gold; "> </span>
-                    <span ng-if="!jg(group.id)" class="glyphicon glyphicon-star-empty" id="{{group.id}}"> </span>
+                    <span ng-if="group.favored"class="glyphicon glyphicon-star" id="{{group.id}}" style="color: gold; "> </span>
+                    <span ng-if="!group.favored" class="glyphicon glyphicon-star-empty" id="{{group.id}}"> </span>
                 </button></td>
                 <td><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
             </tr>
