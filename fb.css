@@ -31,5 +31,40 @@
     display: none;
 }
 .tab-content{
-    display: none;
+    /*display: none;*/
+}
+#details{
+    position: relative;
+    width: 100%;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#details-head{
+    position: relative;
+    width: 100%;
+    height: 40px;
+}
+#details-body{
+    position: relative;
+    width: 100%;
+    padding:10px ;
+}
+
+#details-body-left{
+    position: relative;;
+    float: left;
+    width: 48%;
+    height: 500px;
+    /*margin-right:*/
+    background-color: #337ab7;
+}
+
+#details-body-right{
+    position: relative;;
+    float: right;
+    width: 48%;
+    height: 500px;
+    /*margin-right:*/
+    background-color: aquamarine;
 }

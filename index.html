@@ -249,6 +249,46 @@
     </div>
 </div>
 
+<!--detail-->
+    <div id="details">
+        <div id="details-head">
+            <button class="btn btn-default" type="button" style="position: relative;float: left"><span class="glyphicon glyphicon-chevron-left"></span>Back</button>
+            <button class="btn btn-default" type="button"  style="position: relative;float: right"  ng-click=""><img src="http://cs-server.usc.edu:45678/hw/hw8/images/facebook.png" width="15px"></button>
+
+            <!--<span ng-if="user.favored"class="glyphicon glyphicon-star" id="{{user.id}}" style="color: gold; "> </span>-->
+            <button class="btn btn-default" type="button"  style="position: relative;float: right;margin-right: 20px" ng-click="storage(user.id,'user',user)">
+            <span class="glyphicon glyphicon-star-empty" > </span>
+            </button>
+        </div>
+
+        <div id="details-body">
+            <div id="details-body-left">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Albums</div>
+                    <div class="panel-body">
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div id="details-body-right">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Posts</div>
+                    <div class="panel-body">
+                        Panel content
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
 </div>
 <script src="fb.js"></script>
 </body>

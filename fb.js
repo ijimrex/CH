@@ -30,8 +30,7 @@ app.controller('fbController', function($scope,$http) {
     getall()
     // console.log($scope.favstorage)
 
-
-
+// search
     function show(id){
         document.getElementById(id).style.display='block'
 
@@ -109,6 +108,7 @@ app.controller('fbController', function($scope,$http) {
             console.log('http error')
         });
     }
+ //~pagination
 //user
     $scope.usernextpage=function () {
         $http({
@@ -238,6 +238,10 @@ app.controller('fbController', function($scope,$http) {
         });
     }
 
+
+
+
+//favorite
     function getall() {
         $scope.fid=new Array()
         if (localStorage.getItem('item')!=null){
@@ -292,17 +296,6 @@ app.controller('fbController', function($scope,$http) {
        document.getElementById('tc').style.display='block'
     }
 
-
-    $scope.jg=function (id) {
-
-        for (var i=0;i<$scope.fid.length;i++){
-            if ($scope.fid[i]==id){
-                return true
-            }
-
-        }
-        return false
-    }
 
     $scope.trash=function (fav) {
         // console.log(fav)
@@ -365,5 +358,6 @@ app.controller('fbController', function($scope,$http) {
 
 
     }
+    //details
 
 });
