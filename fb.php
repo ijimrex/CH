@@ -9,9 +9,10 @@
 require_once __DIR__ . '/php-graph-sdk-5.0.0/src/Facebook/autoload.php';
 
     $keyword=$_GET["keyword"];
+    $type=$_GET["type"];
     $lat=$_GET["lat"];
     $lng=$_GET["long"];
-    $fields='id,name,picture.width(700).height(700),albums,posts';
+    $fields='id,name,picture.width(700).height(700)';
     
     $accessToken="EAAaKv7Esg68BAKvdA2GOIHxfutua0dL6qZBZAZCLSgB0Fz1dXidLTmOBJOjDb2Bda9d70v1vFnMnvZBEgAum52iGVBJkjlzI0EdU7ZAcjhFZCeFfjyFMV1SyLxMdGHnq3sPao63VYfEOutfmAXtUk71zllLxhpS7QZD";
     $fb = new Facebook\Facebook([
