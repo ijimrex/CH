@@ -285,6 +285,7 @@ app.controller('fbController', function($scope,$http) {
             document.getElementById(ids).className='glyphicon glyphicon-star-empty'
             document.getElementById(ids).style.color='black'
 
+
         }
 
     }
@@ -301,6 +302,16 @@ app.controller('fbController', function($scope,$http) {
 
         }
         return false
+    }
+    $scope.trash=function (ids) {
+        getall()
+        var index=$scope.fid.indexOf(ids)
+        $scope.favstorage.splice(index,1)
+        $scope.fid.splice(index,1)
+        $scope.fall=parseData2($scope.favstorage)
+        var tojson=JSON.stringify( $scope.favstorage );
+        localStorage.item=tojson;
+
     }
     // console.log($scope.fid)
     // localStorage.clear();

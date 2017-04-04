@@ -100,12 +100,17 @@
             </tr>
             </thead>
             <tbody>
+
             <tr ng-repeat="page in pages">
                 <td>{{page.num}}</td>
                 <td><img src="{{page.picurl}}"  class="img-circle" style="width: 64px;height: 64px"></td>
                 <td>{{ page.name }}</td>
-                <td><button class="btn btn-default" type="button" ><span class="glyphicon glyphicon-star-empty"></span></button></td>
-                <td><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-chevron-right"></span></button></td>
+                <td><button class="btn btn-default" type="button"   ng-click="storage(page.id,'page',page)">
+
+                    <span ng-if="jg(page.id)"class="glyphicon glyphicon-star" id="{{page.id}}" style="color: gold; "> </span>
+                    <span ng-if="!jg(page.id)" class="glyphicon glyphicon-star-empty" id="{{page.id}}"> </span>
+                </button></td>
+                <td><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
             </tr>
             </tbody>
         </table>
@@ -130,12 +135,17 @@
             </tr>
             </thead>
             <tbody>
+
             <tr ng-repeat="event in events">
                 <td>{{event.num}}</td>
                 <td><img src="{{event.picurl}}"  class="img-circle" style="width: 64px;height: 64px"></td>
                 <td>{{ event.name }}</td>
-                <td><button class="btn btn-default" type="button" ><span class="glyphicon glyphicon-star-empty"></span></button></td>
-                <td><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-chevron-right"></span></button></td>
+                <td><button class="btn btn-default" type="button"   ng-click="storage(event.id,'event',event)">
+
+                    <span ng-if="jg(event.id)"class="glyphicon glyphicon-star" id="{{event.id}}" style="color: gold; "> </span>
+                    <span ng-if="!jg(event.id)" class="glyphicon glyphicon-star-empty" id="{{event.id}}"> </span>
+                </button></td>
+                <td><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
             </tr>
             </tbody>
         </table>
@@ -159,12 +169,17 @@
             </tr>
             </thead>
             <tbody>
+
             <tr ng-repeat="place in places">
                 <td>{{place.num}}</td>
                 <td><img src="{{place.picurl}}"  class="img-circle" style="width: 64px;height: 64px"></td>
                 <td>{{ place.name }}</td>
-                <td><button class="btn btn-default" type="button" ><span class="glyphicon glyphicon-star-empty"></span></button></td>
-                <td><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-chevron-right"></span></button></td>
+                <td><button class="btn btn-default" type="button"   ng-click="storage(place.id,'place',place)">
+
+                    <span ng-if="jg(place.id)"class="glyphicon glyphicon-star" id="{{place.id}}" style="color: gold; "> </span>
+                    <span ng-if="!jg(place.id)" class="glyphicon glyphicon-star-empty" id="{{place.id}}"> </span>
+                </button></td>
+                <td><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
             </tr>
             </tbody>
         </table>
@@ -186,12 +201,17 @@
             </tr>
             </thead>
             <tbody>
+
             <tr ng-repeat="group in groups">
                 <td>{{group.num}}</td>
                 <td><img src="{{group.picurl}}"  class="img-circle" style="width: 64px;height: 64px"></td>
                 <td>{{ group.name }}</td>
-                <td><button class="btn btn-default" type="button" ><span class="glyphicon glyphicon-star-empty"></span></button></td>
-                <td><button class="btn btn-default" type="button>"><span class="glyphicon glyphicon-chevron-right"></span></button></td>
+                <td><button class="btn btn-default" type="button"   ng-click="storage(group.id,'group',group)">
+
+                    <span ng-if="jg(group.id)"class="glyphicon glyphicon-star" id="{{group.id}}" style="color: gold; "> </span>
+                    <span ng-if="!jg(group.id)" class="glyphicon glyphicon-star-empty" id="{{group.id}}"> </span>
+                </button></td>
+                <td><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
             </tr>
             </tbody>
         </table>
@@ -221,7 +241,7 @@
                 <td><img src="{{fav.picurl}}"  class="img-circle" style="width: 64px;height: 64px"></td>
                 <td>{{ fav.name }}</td>
                 <td>{{fav.type}}</td>
-                <td><button class="btn btn-default" type="button" ><span class="glyphicon glyphicon-trash"></span></button></td>
+                <td><button class="btn btn-default" type="button" ng-click="trash(fav.id)" ><span class="glyphicon glyphicon-trash"></span></button></td>
                 <td><button class="btn btn-default" type="button>"><span class="glyphicon glyphicon-chevron-right"></span></button></td>
             </tr>
             </tbody>
