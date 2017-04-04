@@ -24,16 +24,12 @@ app.controller('fbController', function($scope,$http) {
         $scope.keyword =""
     }
     $scope.favstorage=new Array()
+    $scope.fall=""
 
 
     getall()
     // console.log($scope.favstorage)
-    Array.prototype.remove = function(val) {
-        var index = this.indexOf(val);
-        if (index > -1) {
-            this.splice(index, 1);
-        }
-    };
+
 
 
     function show(id){
@@ -55,6 +51,22 @@ app.controller('fbController', function($scope,$http) {
                 id: data[i]['id'],
                 name: data[i]['name'],
                 picurl: data[i]['picture']['data']['url'],
+            })
+        }
+        return temp
+    }
+
+    function parseData2(data) {
+           // console.log(data)
+        var temp=Array()
+        var len=data.length;
+        for (var i=0;i<len;i++){
+            temp.push({
+                num: i+1,
+                id: data[i]['all']['id'],
+                name: data[i]['all']['name'],
+                type: data[i]['type'],
+                picurl: data[i]['all']['picurl'],
             })
         }
         return temp
@@ -236,20 +248,24 @@ app.controller('fbController', function($scope,$http) {
             for (var i=0;i< $scope.favstorage.length;i++){
                 $scope.fid.push($scope.favstorage[i]['id'])
             }
+            $scope.fall=parseData2($scope.favstorage)
+            console.log(  $scope.fall)
         }
         // console.log(  $scope.favstorage )
     }
 
-    $scope.storage=function(ids,type){
+    $scope.storage=function(ids,type,all){
         getall()
-        var temp={id:ids,type:type}
+        var temp={id:ids,type:type,all:all}
             // console.log('stor'+temp)
         if ($scope.fid.indexOf(ids)==-1){
             $scope.favstorage.push(temp)
+            $scope.fall=parseData2($scope.favstorage)
             var tojson=JSON.stringify( $scope.favstorage );
             console.log(tojson)
             localStorage.item=tojson;
 
+            console.log(fall)
         }
         else {
             // alert('in')
@@ -258,13 +274,27 @@ app.controller('fbController', function($scope,$http) {
             // console.log(index)
             $scope.favstorage.splice(index,1)
             $scope.fid.splice(index,1)
+            $scope.fall=parseData2($scope.favstorage)
             var tojson=JSON.stringify( $scope.favstorage );
             console.log(tojson)
             localStorage.item=tojson;
+
         }
 
     }
-    localStorage.clear();
+    $scope.showfav=function () {
+       document.getElementById('tc').style.display='block'
+    }
+    function changebutton(num) {
+        if (num==0){
+
+        }
+        else {
+
+        }
+        
+    }
+    // localStorage.clear();
 //        $scope.placepreviouspage=function () {
 //            $http({
 //                method: 'GET',

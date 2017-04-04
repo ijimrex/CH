@@ -36,7 +36,7 @@
             <li role="presentation"><a href="#event" style="border-radius: 0px" id="tevent" data-toggle="tab">Events</a></li>
             <li role="presentation"><a href="#place" style="border-radius: 0px" id="tplace" data-toggle="tab">Places</a></li>
             <li role="presentation"><a href="#group" style="border-radius: 0px" id="tgroup" data-toggle="tab">Groups</a></li>
-            <li role="presentation"><a href="#favourite" style="border-radius: 0px" id="tfavourite" data-toggle="tab">Favourites</a></li>
+            <li role="presentation" ng-click="showfav()"><a href="#favourite" style="border-radius: 0px" id="tfavourite" data-toggle="tab">Favourites</a></li>
         </ul>
     </div>
 
@@ -48,7 +48,8 @@
             <span class="sr-only">60% Complete</span>
         </div>
     </div>
-    {{favstorage}}
+    <!--{{fall}}-->
+    <!--{{favstorage}}-->
 <!--user-->
     <!--{{placepage.pre}}-->
     <!--{{placepage.next}}-->
@@ -70,7 +71,7 @@
                 <td>{{user.num}}</td>
                 <td><img src="{{user.picurl}}"  class="img-circle" style="width: 64px;height: 64px"></td>
                 <td>{{ user.name }}</td>
-                <td><button class="btn btn-default" type="button"   ng-click="storage(user.id,'user')"><span class="glyphicon glyphicon-star-empty"></span></button></td>
+                <td><button class="btn btn-default" type="button"   ng-click="storage(user.id,'user',user)"><span class="glyphicon glyphicon-star-empty"></span></button></td>
                 <td><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-chevron-right"></span></button></td>
             </tr>
             </tbody>
@@ -197,7 +198,32 @@
         </ul>
     </div>
 <!--facourite        -->
-    <div id="favourite" class="tab-pane fade" ></div>
+    <div id="favourite" class="tab-pane fade" >
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Profile Photo</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Favourite</th>
+                <th>Details</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="fav in fall">
+                <td>{{fav.num}}</td>
+                <td><img src="{{fav.picurl}}"  class="img-circle" style="width: 64px;height: 64px"></td>
+                <td>{{ fav.name }}</td>
+                <td>{{fav.type}}</td>
+                <td><button class="btn btn-default" type="button" ><span class="glyphicon glyphicon-star-empty"></span></button></td>
+                <td><button class="btn btn-default" type="button>"><span class="glyphicon glyphicon-chevron-right"></span></button></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
 </div>
 </div>
 <script src="fb.js"></script>
