@@ -25,6 +25,7 @@ app.controller('fbController', function($scope,$http) {
     }
     $scope.favstorage=new Array()
 
+
     getall()
     // console.log($scope.favstorage)
     Array.prototype.remove = function(val) {
@@ -33,17 +34,7 @@ app.controller('fbController', function($scope,$http) {
             this.splice(index, 1);
         }
     };
-    function getall() {
-        // if (localStorage.getItem('item')!=null){
-        //
-        //     }
-        $scope.favstorage=JSON.parse(localStorage.getItem('item'))
-        // console.log(localStorage.getItem('item'))
 
-        console.log(  $scope.favstorage )
-
-
-    }
 
     function show(id){
         document.getElementById(id).style.display='block'
@@ -238,22 +229,42 @@ app.controller('fbController', function($scope,$http) {
         });
     }
 
+    function getall() {
+        $scope.fid=new Array()
+        if (localStorage.getItem('item')!=null){
+            $scope.favstorage=JSON.parse(localStorage.getItem('item'))
+            for (var i=0;i< $scope.favstorage.length;i++){
+                $scope.fid.push($scope.favstorage[i]['id'])
+            }
+        }
+        // console.log(  $scope.favstorage )
+    }
+
     $scope.storage=function(ids,type){
+        getall()
         var temp={id:ids,type:type}
-        console.log('stor'+temp)
-        if ($scope.favstorage.indexOf(temp)==-1){
+            // console.log('stor'+temp)
+        if ($scope.fid.indexOf(ids)==-1){
             $scope.favstorage.push(temp)
             var tojson=JSON.stringify( $scope.favstorage );
+            console.log(tojson)
             localStorage.item=tojson;
 
         }
         else {
-            // localStorage.removeItem(id)
-            // $scope.favstorage.remove({id:type})
+            // alert('in')
+            var index=$scope.fid.indexOf(ids)
+            console.log($scope.fid)
+            // console.log(index)
+            $scope.favstorage.splice(index,1)
+            $scope.fid.splice(index,1)
+            var tojson=JSON.stringify( $scope.favstorage );
+            console.log(tojson)
+            localStorage.item=tojson;
         }
 
     }
-    // localStorage.clear();
+    localStorage.clear();
 //        $scope.placepreviouspage=function () {
 //            $http({
 //                method: 'GET',

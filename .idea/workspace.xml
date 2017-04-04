@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85c36f77-a348-4b97-83e4-09cbd8a2ee2f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fb.js" afterPath="$PROJECT_DIR$/fb.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -66,10 +63,13 @@
       <file leaf-file-name="fb.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/fb.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state relative-caret-position="305">
+              <caret line="239" column="44" lean-forward="true" selection-start-line="239" selection-start-column="44" selection-end-line="239" selection-end-column="44" />
               <folding>
                 <element signature="e#0#40#0" expanded="false" />
+                <element signature="e#1550#2851#0" expanded="false" />
+                <element signature="e#2895#3620#0" expanded="false" />
+                <element signature="e#4491#5216#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -279,12 +279,12 @@
       <workItem from="1491032702961" duration="1309000" />
       <workItem from="1491078789665" duration="583000" />
       <workItem from="1491171061439" duration="21170000" />
-      <workItem from="1491275656814" duration="3229000" />
+      <workItem from="1491275656814" duration="5341000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49484000" />
+    <option name="totallyTimeSpent" value="51596000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -411,6 +411,9 @@
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
             <element signature="e#0#40#0" expanded="false" />
+            <element signature="e#1550#2851#0" expanded="false" />
+            <element signature="e#2895#3620#0" expanded="false" />
+            <element signature="e#4491#5216#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -482,6 +485,9 @@
           <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
             <element signature="e#0#40#0" expanded="false" />
+            <element signature="e#1550#2851#0" expanded="false" />
+            <element signature="e#2895#3620#0" expanded="false" />
+            <element signature="e#4491#5216#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -553,6 +559,9 @@
           <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
             <element signature="e#0#40#0" expanded="false" />
+            <element signature="e#1550#2851#0" expanded="false" />
+            <element signature="e#2895#3620#0" expanded="false" />
+            <element signature="e#4491#5216#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -571,6 +580,9 @@
           <caret line="36" column="3" lean-forward="false" selection-start-line="36" selection-start-column="3" selection-end-line="36" selection-end-column="3" />
           <folding>
             <element signature="e#0#40#0" expanded="false" />
+            <element signature="e#1550#2851#0" expanded="false" />
+            <element signature="e#2895#3620#0" expanded="false" />
+            <element signature="e#4491#5216#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -695,6 +707,9 @@
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
             <element signature="e#0#40#0" expanded="false" />
+            <element signature="e#1550#2851#0" expanded="false" />
+            <element signature="e#2895#3620#0" expanded="false" />
+            <element signature="e#4491#5216#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -766,6 +781,9 @@
           <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
             <element signature="e#0#40#0" expanded="false" />
+            <element signature="e#1550#2851#0" expanded="false" />
+            <element signature="e#2895#3620#0" expanded="false" />
+            <element signature="e#4491#5216#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -837,6 +855,9 @@
           <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
             <element signature="e#0#40#0" expanded="false" />
+            <element signature="e#1550#2851#0" expanded="false" />
+            <element signature="e#2895#3620#0" expanded="false" />
+            <element signature="e#4491#5216#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -904,10 +925,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fb.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        <state relative-caret-position="305">
+          <caret line="239" column="44" lean-forward="true" selection-start-line="239" selection-start-column="44" selection-end-line="239" selection-end-column="44" />
           <folding>
             <element signature="e#0#40#0" expanded="false" />
+            <element signature="e#1550#2851#0" expanded="false" />
+            <element signature="e#2895#3620#0" expanded="false" />
+            <element signature="e#4491#5216#0" expanded="false" />
           </folding>
         </state>
       </provider>
