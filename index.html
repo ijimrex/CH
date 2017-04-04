@@ -73,8 +73,8 @@
                 <td>{{ user.name }}</td>
                 <td><button class="btn btn-default" type="button"   ng-click="storage(user.id,'user',user)">
 
-                    <span ng-if="jg(user.id)"class="glyphicon glyphicon-star" id="{{user.id}}" style="color: gold; "> </span>
-                    <span ng-if="!jg(user.id)" class="glyphicon glyphicon-star-empty" id="{{user.id}}"> </span>
+                    <span ng-if="user.favored"class="glyphicon glyphicon-star" id="{{user.id}}" style="color: gold; "> </span>
+                    <span ng-if="!user.favored" class="glyphicon glyphicon-star-empty" id="{{user.id}}"> </span>
                 </button></td>
                 <td><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
             </tr>
@@ -221,7 +221,7 @@
         </ul>
         </ul>
     </div>
-<!--facourite        -->
+<!--facourite-->
     <div id="favourite" class="tab-pane fade" >
 
         <table class="table">
@@ -241,7 +241,7 @@
                 <td><img src="{{fav.picurl}}"  class="img-circle" style="width: 64px;height: 64px"></td>
                 <td>{{ fav.name }}</td>
                 <td>{{fav.type}}</td>
-                <td><button class="btn btn-default" type="button" ng-click="trash(fav.id)" ><span class="glyphicon glyphicon-trash"></span></button></td>
+                <td><button class="btn btn-default" type="button" ng-click="trash(fav)" ><span class="glyphicon glyphicon-trash"></span></button></td>
                 <td><button class="btn btn-default" type="button>"><span class="glyphicon glyphicon-chevron-right"></span></button></td>
             </tr>
             </tbody>
@@ -249,6 +249,7 @@
 
     </div>
 </div>
+
 </div>
 <script src="fb.js"></script>
 </body>

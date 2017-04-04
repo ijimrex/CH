@@ -45,13 +45,23 @@ app.controller('fbController', function($scope,$http) {
 //            console.log(data)
         var temp=Array()
         var len=data.length;
+        var len2=$scope.fid.length;
         for (var i=0;i<len;i++){
+            var fg=0
             temp.push({
                 num: i+1,
                 id: data[i]['id'],
                 name: data[i]['name'],
                 picurl: data[i]['picture']['data']['url'],
             })
+            for (var j=0;j<len2;j++){
+                if (data[i]['id']==$scope.fid[j]){
+                    temp[i].favored=true
+                    fg=1
+                    break
+                }
+            }if (fg==0){
+                temp[i].favored=false}
         }
         return temp
     }
@@ -67,6 +77,7 @@ app.controller('fbController', function($scope,$http) {
                 name: data[i]['all']['name'],
                 type: data[i]['type'],
                 picurl: data[i]['all']['picurl'],
+                favored: true
             })
         }
         return temp
@@ -209,21 +220,7 @@ app.controller('fbController', function($scope,$http) {
             console.log('http error')
         });
     }
-//        $scope.eventpreviouspage=function () {
-//            $http({
-//                method: 'GET',
-//                url: $scope.eventpage['previous']
-//            }).then(function successCallback(response) {
-//                $scope.events=parseData(response['data']['data'])
-//                if (response['data'].hasOwnProperty('paging')&&response['data']['paging']['previous']!=undefined && response['data']['paging']['previous']!='')
-//                { $scope.eventpage={next:response['data']['paging']['next'],previous:response['data']['paging']['previous'],nex:true,pre:true}}
-//                else{
-//                    $scope.eventpage={next:response['data']['paging']['next'],previous:"",nex:true,pre:false}
-//                }
-//            }, function errorCallback(response) {
-//                console.log('http error')
-//            });
-//        }
+
 //place
     $scope.placenextpage=function () {
         $http({
@@ -256,34 +253,36 @@ app.controller('fbController', function($scope,$http) {
 
     $scope.storage=function(ids,type,all){
         getall()
+        all.favored=true
         var temp={id:ids,type:type,all:all}
             // console.log('stor'+temp)
         if ($scope.fid.indexOf(ids)==-1){
             $scope.favstorage.push(temp)
             $scope.fall=parseData2($scope.favstorage)
             var tojson=JSON.stringify( $scope.favstorage );
-            // console.log(tojson)
+            console.log(tojson)
             localStorage.item=tojson;
-
             console.log($scope.fall)
-            document.getElementById(ids).className='glyphicon glyphicon-star'
-            document.getElementById(ids).style.color='gold'
+            // document.getElementById(ids).className='glyphicon glyphicon-star'
+            // document.getElementById(ids).style.color='gold'
             
         }
         else {
             // alert('in')
+            all.favored=false
             var index=$scope.fid.indexOf(ids)
             // console.log($scope.fid)
             // console.log(index)
+            $scope.favstorage[index]['all'].favored=false
             $scope.favstorage.splice(index,1)
             $scope.fid.splice(index,1)
             $scope.fall=parseData2($scope.favstorage)
             var tojson=JSON.stringify( $scope.favstorage );
-            // console.log(tojson)
+            console.log(tojson)
             console.log($scope.fall)
             localStorage.item=tojson;
-            document.getElementById(ids).className='glyphicon glyphicon-star-empty'
-            document.getElementById(ids).style.color='black'
+            // document.getElementById(ids).className='glyphicon glyphicon-star-empty'
+            // document.getElementById(ids).style.color='black'
 
 
         }
@@ -292,6 +291,7 @@ app.controller('fbController', function($scope,$http) {
     $scope.showfav=function () {
        document.getElementById('tc').style.display='block'
     }
+
 
     $scope.jg=function (id) {
 
@@ -303,32 +303,67 @@ app.controller('fbController', function($scope,$http) {
         }
         return false
     }
-    $scope.trash=function (ids) {
+
+    $scope.trash=function (fav) {
+        // console.log(fav)
         getall()
-        var index=$scope.fid.indexOf(ids)
+        var index=$scope.fid.indexOf(fav.id)
+        var usersleng=$scope.users.length;
+        var pagesleng=$scope.pages.length;
+        var eventsleng=$scope.events.length;
+        var groupsleng=$scope.groups.length;
+        var placesleng=$scope.places.length;
+
+        for (var i=0;i<usersleng;i++){
+            // console.log($scope.users[i].id)
+            // console.log(fav.id)
+                if ($scope.users[i].id==fav.id){
+                    $scope.users[i].favored=false
+
+                }
+
+        }
+        for (var i=0;i<pagesleng;i++){
+            if ($scope.pages[i].id==fav.id){
+                $scope.pages[i].favored=false
+            }
+
+        }
+        for (var i=0;i<eventsleng;i++){
+            if ($scope.events[i].id==fav.id){
+                $scope.events[i].favored=false
+            }
+
+        }
+
+        for (var i=0;i<groupsleng;i++){
+            if ($scope.groups[i].id==fav.id){
+                $scope.groups[i].favored=false
+            }
+
+        }
+
+        for (var i=0;i<placesleng;i++){
+            if ($scope.places[i].id==fav.id){
+                $scope.places[i].favored=false
+            }
+
+        }
+        $scope.favstorage[index]['all'].favored=false
         $scope.favstorage.splice(index,1)
         $scope.fid.splice(index,1)
         $scope.fall=parseData2($scope.favstorage)
         var tojson=JSON.stringify( $scope.favstorage );
+        console.log($scope.users)
         localStorage.item=tojson;
+        console.log($scope.fall)
 
     }
-    // console.log($scope.fid)
-    // localStorage.clear();
-//        $scope.placepreviouspage=function () {
-//            $http({
-//                method: 'GET',
-//                url: $scope.placepage['previous']
-//            }).then(function successCallback(response) {
-//                console.log(response)
-//                $scope.places=parseData(response['data']['data'])
-//                if (response['data']['paging']!=undefined&&response['data']['paging']['previous']!=undefined && response['data']['paging']['previous']!='')
-//                { $scope.placepage={next:response['data']['paging']['next'],previous:response['data']['paging']['previous'],nex:true,pre:true}}
-//                else{
-//                    $scope.placepage={next:response['data']['paging']['next'],previous:"",nex:true,pre:false}
-//                }
-//            }, function errorCallback(response) {
-//                console.log('http error')
-//            });
-//        }
+    $scope.refresh=function () {
+        document.getElementById('tc').style.display='none'
+        document.getElementById('tc').style.display='block'
+
+
+    }
+
 });
