@@ -249,7 +249,7 @@ app.controller('fbController', function($scope,$http) {
                 $scope.fid.push($scope.favstorage[i]['id'])
             }
             $scope.fall=parseData2($scope.favstorage)
-            console.log(  $scope.fall)
+            // console.log(  $scope.fall)
         }
         // console.log(  $scope.favstorage )
     }
@@ -262,22 +262,28 @@ app.controller('fbController', function($scope,$http) {
             $scope.favstorage.push(temp)
             $scope.fall=parseData2($scope.favstorage)
             var tojson=JSON.stringify( $scope.favstorage );
-            console.log(tojson)
+            // console.log(tojson)
             localStorage.item=tojson;
 
-            console.log(fall)
+            console.log($scope.fall)
+            document.getElementById(ids).className='glyphicon glyphicon-star'
+            document.getElementById(ids).style.color='gold'
+            
         }
         else {
             // alert('in')
             var index=$scope.fid.indexOf(ids)
-            console.log($scope.fid)
+            // console.log($scope.fid)
             // console.log(index)
             $scope.favstorage.splice(index,1)
             $scope.fid.splice(index,1)
             $scope.fall=parseData2($scope.favstorage)
             var tojson=JSON.stringify( $scope.favstorage );
-            console.log(tojson)
+            // console.log(tojson)
+            console.log($scope.fall)
             localStorage.item=tojson;
+            document.getElementById(ids).className='glyphicon glyphicon-star-empty'
+            document.getElementById(ids).style.color='black'
 
         }
 
@@ -285,15 +291,18 @@ app.controller('fbController', function($scope,$http) {
     $scope.showfav=function () {
        document.getElementById('tc').style.display='block'
     }
-    function changebutton(num) {
-        if (num==0){
+
+    $scope.jg=function (id) {
+
+        for (var i=0;i<$scope.fid.length;i++){
+            if ($scope.fid[i]==id){
+                return true
+            }
 
         }
-        else {
-
-        }
-        
+        return false
     }
+    // console.log($scope.fid)
     // localStorage.clear();
 //        $scope.placepreviouspage=function () {
 //            $http({
