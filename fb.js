@@ -377,17 +377,17 @@ app.controller('fbController', function($scope,$http) {
 
     }
     //details
-    $scope.detailsearch=function (id)  {
+    $scope.detailsearch=function (id,name,picurl)  {
         // hide('tc')
         // show('progressbar')
         $http({
             method: 'GET',
             url: 'fb.php?&detailid='+id
         }).then(function successCallback(response) {
-            console.log(id)
+            // console.log(id)
             if (response['data']['albums']){
                 $scope.albums=response['data']['albums']['data']
-                console.log($scope.albums)
+                // console.log($scope.albums)
             var len1=$scope.albums.length
 
                 for (var i=0;i<len1;i++){
@@ -404,31 +404,27 @@ app.controller('fbController', function($scope,$http) {
                         $scope.albums[i].photos.data=[]
                         // $scope.albums[i].photos.data[0]=""
                         $scope.albums[i].photos.data[0].picurl = 'https://graph.facebook.com/v2.8/' + $scope.albums[i].id + '/picture?access_token=EAAaKv7Esg68BAKvdA2GOIHxfutua0dL6qZBZAZCLSgB0Fz1dXidLTmOBJOjDb2Bda9d70v1vFnMnvZBEgAum52iGVBJkjlzI0EdU7ZAcjhFZCeFfjyFMV1SyLxMdGHnq3sPao63VYfEOutfmAXtUk71zllLxhpS7QZD'
-
                     }
                     }
-
-
             }
 
             else $scope.albums=""
-            if (response['data']['posts'])
-                $scope.posts=response['data']['posts']['data']
-            else $scope.posts=""
-             console.log($scope.albums)
 
-//                console.log(response['data']['user']['data'])
-//             $scope.users=parseData(response['data']['user']['data'])
-//             $scope.events=parseData(response['data']['event']['data'])
-//             $scope.pages=parseData(response['data']['page']['data'])
-//             $scope.places=parseData(response['data']['place']['data'])
-//             $scope.groups=parseData(response['data']['group']['data'])
-//
-//             $scope.userpage={next:response['data']['user']['paging']['next'],pre:false,nex:true}
-//             $scope.eventpage={next:response['data']['event']['paging']['next'],pre:false,nex:true}
-//             $scope.pagepage={next:response['data']['page']['paging']['next'],pre:false,nex:true}
-//             $scope.placepage={next:response['data']['place']['paging']['next'],pre:false,nex:true}
-//             $scope.grouppage ={next:response['data']['group']['paging']['next'],pre:false,nex:true}
+            if (response['data']['posts']){
+                // console.log(name)
+                // console.log(picurl)
+
+                $scope.posts=response['data']['posts']['data'];
+                $scope.posts.name=name
+                $scope.posts.picurl=picurl
+
+                // for (vai=0;i<$scope.posts.length;i++){
+                //
+                // }
+            }
+            else $scope.posts=""
+             console.log($scope.posts)
+
 
             // hide('progressbar')
             // show('tc')
