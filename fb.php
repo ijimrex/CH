@@ -74,16 +74,6 @@
     $combineRes->place=$placeRes;
     echo json_encode($combineRes);
 
-//        case 'places':
-//            // $request = $fb->request('GET','/search',['q'=>$keyword,'type'=>'event','fields'=>$fields]);
-//            $content=file_get_contents("https://maps.googleapis.com/maps/api/geocode/json?address=".$location."&key=AIzaSyCm9AMkzgUPh7kfxRIk5KQooZKN-b3lcBY");
-//            $content=json_decode($content,true);
-//            $lat=$content["results"][0]["geometry"]["location"]["lat"];
-//            $lng=$content["results"][0]["geometry"]["location"]["lng"];
-//            // echo $lat.$lng;
-//            //***TODO: consider not exists
-           // $request = $fb->request('GET','/search',['q'=>$keyword,'type'=>'place','center'=>$lat.','.$lng,'distance'=>$distance,'fields'=>$fields]);
-//            break;
      }
     else{
         // echo "in";

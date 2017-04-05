@@ -384,13 +384,30 @@ app.controller('fbController', function($scope,$http) {
             method: 'GET',
             url: 'fb.php?&detailid='+id
         }).then(function successCallback(response) {
-            if (response['data']['albums'])
-                $scope.albums=response['data']['albums']
+
+            if (response['data']['albums']){
+                $scope.albums=response['data']['albums']['data']
+                console.log($scope.albums)
+            var len1=$scope.albums.length
+                    
+                for (var i=0;i<len1;i++){
+                    $scope.albums[i].showid='#'+$scope.albums[i].id
+                    var len2=$scope.albums[i].photos.data.length
+                    for (var j=1;j<len2;j++){
+                        $scope.albums[i].photos.data[j].picurl='https://graph.facebook.com/v2.8/'+$scope.albums[i].photos.data[j].picurl+'/picture?access_token=EAAaKv7Esg68BAKvdA2GOIHxfutua0dL6qZBZAZCLSgB0Fz1dXidLTmOBJOjDb2Bda9d70v1vFnMnvZBEgAum52iGVBJkjlzI0EdU7ZAcjhFZCeFfjyFMV1SyLxMdGHnq3sPao63VYfEOutfmAXtUk71zllLxhpS7QZD'
+
+                    }
+
+                }
+
+
+            }
+
             else $scope.albums=""
             if (response['data']['posts'])
-                $scope.posts=response['data']['posts']
+                $scope.posts=response['data']['posts']['data']
             else $scope.posts=""
-             // console.log($scope.albums)
+             console.log($scope.albums)
 
 //                console.log(response['data']['user']['data'])
 //             $scope.users=parseData(response['data']['user']['data'])

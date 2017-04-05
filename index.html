@@ -263,14 +263,114 @@
 
         <div id="details-body">
             <div id="details-body-left">
+
                 <div class="panel panel-default">
                     <div class="panel-heading">Albums</div>
                     <div class="panel-body">
                         <div class="well" style="background-color: yellow " ng-if="albums=='' ">
                             No Data Found.
                         </div>
-                        <div class="well" style="background-color: yellow " ng-if="albums!='' ">
-                            <div ng-repeat
+                        <div class="well"  ng-if="albums!='' ">
+
+                            <div class="panel-group" id="accordion">
+                                <div ng-if='0<albums.length' class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion"
+                                               href='#0'>
+                                                {{albums[0].name}}
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id='0' class="panel-collapse collapse in">
+                                        <div class="panel-body" ng-repeat="pic in albums[0].photos.data">
+                                            <img src={{pic.picture}}>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div ng-if='1<albums.length' class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion"
+                                               href='#1'>
+                                                {{albums[1].name}}
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id='1' class="panel-collapse collapse ">
+                                        <div class="panel-body" ng-repeat="pic in albums[1].photos.data">
+                                            <img src={{pic.picture}}>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div ng-if='2<albums.length'class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion"
+                                               href='#2'>
+                                                {{albums[2].name}}
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id='2' class="panel-collapse collapse">
+                                        <div class="panel-body" ng-repeat="pic in albums[2].photos.data">
+                                            <img src={{pic.picture}}>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div ng-if='3<albums.length'class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion"
+                                               href='#3'>
+                                                {{albums[3].name}}
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id='3' class="panel-collapse collapse">
+                                        <div class="panel-body" ng-repeat="pic in albums[3].photos.data">
+                                            <img src={{pic.picture}}>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div ng-if='4<=albums.length'class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion"
+                                               href='#4'>
+                                                {{albums[4].name}}
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id='4' class="panel-collapse collapse">
+                                        <div class="panel-body" ng-repeat="pic in albums[4].photos.data">
+                                            <img src={{pic.picture}}>
+                                        </div>
+                                    </div>
+                                </div>
+                            <!--<div ng-repeat="album in albums">-->
+                                    <!--<div class="panel panel-default">-->
+                                        <!--<div class="panel-heading">-->
+                                            <!--<h4 class="panel-title">-->
+                                                <!--<a data-toggle="collapse" data-parent="#accordion"-->
+                                                   <!--href={{album.showid}}>-->
+                                                    <!--{{album.name}}-->
+                                                <!--</a>-->
+                                            <!--</h4>-->
+                                        <!--</div>-->
+                                        <!--<div id={{album['id']}} class="panel-collapse collapse in">-->
+                                            <!--<div class="panel-body" ng-repeat="pic in album.photos.data">-->
+                                                <!--<img src={{pic.picture}}>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+                            </div>
 
                         </div>
 
