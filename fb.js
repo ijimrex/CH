@@ -380,6 +380,7 @@ app.controller('fbController', function($scope,$http) {
     $scope.detailsearch=function (id,name,picurl)  {
         // hide('tc')
         // show('progressbar')
+        console.log('id='+id)
         $http({
             method: 'GET',
             url: 'fb.php?&detailid='+id
@@ -394,19 +395,24 @@ app.controller('fbController', function($scope,$http) {
                     $scope.albums[i].showid='#'+$scope.albums[i].id
                     if ($scope.albums[i].photos){
                     var len2=$scope.albums[i].photos.data.length
-                    for (var j=1;j<len2;j++){
-                        $scope.albums[i].photos.data[j].picurl='https://graph.facebook.com/v2.8/'+$scope.albums[i].photos.data[j].picurl+'/picture?access_token=EAAaKv7Esg68BAKvdA2GOIHxfutua0dL6qZBZAZCLSgB0Fz1dXidLTmOBJOjDb2Bda9d70v1vFnMnvZBEgAum52iGVBJkjlzI0EdU7ZAcjhFZCeFfjyFMV1SyLxMdGHnq3sPao63VYfEOutfmAXtUk71zllLxhpS7QZD'
+                    for (var j=0;j<len2;j++){
 
+                        $scope.albums[i].photos.data[j].picture='https://graph.facebook.com/v2.8/'+$scope.albums[i].photos.data[j].id+'/picture?access_token=EAAaKv7Esg68BAKvdA2GOIHxfutua0dL6qZBZAZCLSgB0Fz1dXidLTmOBJOjDb2Bda9d70v1vFnMnvZBEgAum52iGVBJkjlzI0EdU7ZAcjhFZCeFfjyFMV1SyLxMdGHnq3sPao63VYfEOutfmAXtUk71zllLxhpS7QZD'
+                        // console.log($scope.albums[i].photos.data[j].picture)
                     }
                     }
+
                     else if (!$scope.albums[i].photos) {
                         $scope.albums[i].photos=""
                         $scope.albums[i].photos.data=[]
                         // $scope.albums[i].photos.data[0]=""
-                        $scope.albums[i].photos.data[0].picurl = 'https://graph.facebook.com/v2.8/' + $scope.albums[i].id + '/picture?access_token=EAAaKv7Esg68BAKvdA2GOIHxfutua0dL6qZBZAZCLSgB0Fz1dXidLTmOBJOjDb2Bda9d70v1vFnMnvZBEgAum52iGVBJkjlzI0EdU7ZAcjhFZCeFfjyFMV1SyLxMdGHnq3sPao63VYfEOutfmAXtUk71zllLxhpS7QZD'
+                        $scope.albums[i].photos.data[0].picture = 'https://graph.facebook.com/v2.8/' + $scope.albums[i].photos.data[j].id+ '/picture?access_token=EAAaKv7Esg68BAKvdA2GOIHxfutua0dL6qZBZAZCLSgB0Fz1dXidLTmOBJOjDb2Bda9d70v1vFnMnvZBEgAum52iGVBJkjlzI0EdU7ZAcjhFZCeFfjyFMV1SyLxMdGHnq3sPao63VYfEOutfmAXtUk71zllLxhpS7QZD'
+                        $scope.albums[i].photos.data[0].picurl = 'https://graph.facebook.com/v2.8/' + $scope.albums[i].photos.data[j].id+ '/picture?access_token=EAAaKv7Esg68BAKvdA2GOIHxfutua0dL6qZBZAZCLSgB0Fz1dXidLTmOBJOjDb2Bda9d70v1vFnMnvZBEgAum52iGVBJkjlzI0EdU7ZAcjhFZCeFfjyFMV1SyLxMdGHnq3sPao63VYfEOutfmAXtUk71zllLxhpS7QZD'
                     }
                     }
+                console.log($scope.albums)
             }
+
 
             else $scope.albums=""
 
@@ -423,7 +429,7 @@ app.controller('fbController', function($scope,$http) {
                 // }
             }
             else $scope.posts=""
-             console.log($scope.posts)
+             // console.log($scope.posts)
 
 
             // hide('progressbar')

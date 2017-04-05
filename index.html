@@ -267,7 +267,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Albums</div>
                     <div class="panel-body">
-                        <div class="well" style="background-color: yellow " ng-if="albums=='' ">
+                        <div class="well" style="background-color: antiquewhite " ng-if="albums=='' ">
                             No Data Found.
                         </div>
                         <div class="well"  ng-if="albums!='' ">
@@ -284,7 +284,7 @@
                                     </div>
                                     <div id='0' class="panel-collapse collapse in">
                                         <div class="panel-body" ng-repeat="pic in albums[0].photos.data">
-                                            <img src={{pic.picture}}>
+                                            <img src={{pic.picture}} width="100%">
                                         </div>
                                     </div>
                                 </div>
@@ -300,7 +300,7 @@
                                     </div>
                                     <div id='1' class="panel-collapse collapse ">
                                         <div class="panel-body" ng-repeat="pic in albums[1].photos.data">
-                                            <img src={{pic.picture}}>
+                                            <img src={{pic.picture}} width="100%">
                                         </div>
                                     </div>
                                 </div>
@@ -316,7 +316,7 @@
                                     </div>
                                     <div id='2' class="panel-collapse collapse">
                                         <div class="panel-body" ng-repeat="pic in albums[2].photos.data">
-                                            <img src={{pic.picture}}>
+                                            <img src={{pic.picture}} width="100%">
                                         </div>
                                     </div>
                                 </div>
@@ -332,7 +332,7 @@
                                     </div>
                                     <div id='3' class="panel-collapse collapse">
                                         <div class="panel-body" ng-repeat="pic in albums[3].photos.data">
-                                            <img src={{pic.picture}}>
+                                            <img src={{pic.picture}} width="100%">
                                         </div>
                                     </div>
                                 </div>
@@ -348,7 +348,7 @@
                                     </div>
                                     <div id='4' class="panel-collapse collapse">
                                         <div class="panel-body" ng-repeat="pic in albums[4].photos.data">
-                                            <img src={{pic.picture}}>
+                                            <img src={{pic.picture}} width="100%">
                                         </div>
                                     </div>
                                 </div>
@@ -387,7 +387,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Posts</div>
                     <div class="panel-body">
-                        <div class="well" style="background-color: yellow " ng-if="posts==''">
+                        <div class="well" style="background-color: antiquewhite " ng-if="posts==''">
                             No Data Found.
                         </div>
                         <div class="well" ng-if="posts!=''">
