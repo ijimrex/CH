@@ -144,7 +144,7 @@
                     <span ng-if="event.favored"class="glyphicon glyphicon-star" id="{{event.id}}" style="color: gold; "> </span>
                     <span ng-if="!event.favored" class="glyphicon glyphicon-star-empty" id="{{event.id}}"> </span>
                 </button></td>
-                <td><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
+                <td><button class="btn btn-default" type="button" ng-click="detailsearch(event.id)"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
             </tr>
             </tbody>
         </table>
@@ -178,7 +178,7 @@
                     <span ng-if="place.favored"class="glyphicon glyphicon-star" id="{{place.id}}" style="color: gold; "> </span>
                     <span ng-if="!place.favored" class="glyphicon glyphicon-star-empty" id="{{place.id}}"> </span>
                 </button></td>
-                <td><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
+                <td><button class="btn btn-default" type="button" ng-click="detailsearch(place.id)"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
             </tr>
             </tbody>
         </table>
@@ -210,7 +210,7 @@
                     <span ng-if="group.favored"class="glyphicon glyphicon-star" id="{{group.id}}" style="color: gold; "> </span>
                     <span ng-if="!group.favored" class="glyphicon glyphicon-star-empty" id="{{group.id}}"> </span>
                 </button></td>
-                <td><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
+                <td><button class="btn btn-default" type="button" ng-click="detailsearch(group.id)"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
             </tr>
             </tbody>
         </table>
@@ -241,7 +241,7 @@
                 <td>{{ fav.name }}</td>
                 <td>{{fav.type}}</td>
                 <td><button class="btn btn-default" type="button" ng-click="trash(fav)" ><span class="glyphicon glyphicon-trash"></span></button></td>
-                <td><button class="btn btn-default" type="button>"><span class="glyphicon glyphicon-chevron-right"></span></button></td>
+                <td><button class="btn btn-default" type="button>" ng-click="detailsearch(fav.id)"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
             </tr>
             </tbody>
         </table>

@@ -384,21 +384,29 @@ app.controller('fbController', function($scope,$http) {
             method: 'GET',
             url: 'fb.php?&detailid='+id
         }).then(function successCallback(response) {
-
+            console.log(id)
             if (response['data']['albums']){
                 $scope.albums=response['data']['albums']['data']
                 console.log($scope.albums)
             var len1=$scope.albums.length
-                    
+
                 for (var i=0;i<len1;i++){
                     $scope.albums[i].showid='#'+$scope.albums[i].id
+                    if ($scope.albums[i].photos){
                     var len2=$scope.albums[i].photos.data.length
                     for (var j=1;j<len2;j++){
                         $scope.albums[i].photos.data[j].picurl='https://graph.facebook.com/v2.8/'+$scope.albums[i].photos.data[j].picurl+'/picture?access_token=EAAaKv7Esg68BAKvdA2GOIHxfutua0dL6qZBZAZCLSgB0Fz1dXidLTmOBJOjDb2Bda9d70v1vFnMnvZBEgAum52iGVBJkjlzI0EdU7ZAcjhFZCeFfjyFMV1SyLxMdGHnq3sPao63VYfEOutfmAXtUk71zllLxhpS7QZD'
 
                     }
+                    }
+                    else if (!$scope.albums[i].photos) {
+                        $scope.albums[i].photos=""
+                        $scope.albums[i].photos.data=[]
+                        // $scope.albums[i].photos.data[0]=""
+                        $scope.albums[i].photos.data[0].picurl = 'https://graph.facebook.com/v2.8/' + $scope.albums[i].id + '/picture?access_token=EAAaKv7Esg68BAKvdA2GOIHxfutua0dL6qZBZAZCLSgB0Fz1dXidLTmOBJOjDb2Bda9d70v1vFnMnvZBEgAum52iGVBJkjlzI0EdU7ZAcjhFZCeFfjyFMV1SyLxMdGHnq3sPao63VYfEOutfmAXtUk71zllLxhpS7QZD'
 
-                }
+                    }
+                    }
 
 
             }
