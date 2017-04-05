@@ -448,9 +448,15 @@ app.controller('fbController', function($scope,$http) {
 
     }
 
+    $scope.goback=f
+
     $scope.detailsearch=function (id,name,picurl,type)  {
-        // hide('tc')
-        // show('progressbar')
+        hide('tc')
+        show('details')
+        show('progressbar-left')
+        show('progressbar-right')
+        hide('detail-albums')
+        hide('detail-posts')
         // console.log('id='+id)
         getall()
         $scope.detailid=id
@@ -470,6 +476,10 @@ app.controller('fbController', function($scope,$http) {
             method: 'GET',
             url: 'fb.php?&detailid='+id
         }).then(function successCallback(response) {
+            hide('progressbar-left')
+            hide('progressbar-right')
+            show('detail-albums')
+            show('detail-posts')
             // console.log(id)
             if (response['data']['albums']){
                 $scope.albums=response['data']['albums']['data']
@@ -508,10 +518,13 @@ app.controller('fbController', function($scope,$http) {
                 $scope.posts=response['data']['posts']['data'];
                 $scope.posts.name=name
                 $scope.posts.picurl=picurl
+                var len2=$scope.posts.length
+                for (var i=0;i<len2;i++){
+                    $scope.posts[i].created_time=$scope.posts[i].created_time.replace(/T/,' ')
+                    $scope.posts[i].created_time=$scope.posts[i].created_time.replace(/\+0000/,' ')
+                }
 
-                // for (vai=0;i<$scope.posts.length;i++){
-                //
-                // }
+
             }
             else $scope.posts=""
             // console.log($scope.posts)
@@ -522,6 +535,24 @@ app.controller('fbController', function($scope,$http) {
         }, function errorCallback(response) {
             console.log('http error')
         });
+    }
+
+//FBpost
+    $scope.shareFB=function () {
+        FB.ui({
+            app_id: '1841405776135087',
+            method: 'feed',
+            link: window.location.href,
+            picture: Url_of_the_Picture,
+            name: Name_of_the_Object,
+            caption: The_Caption,
+        }, function(response){
+            if (response && !response.error_message)
+                Success
+            else
+                Failed
+        });
+
     }
 
 });
