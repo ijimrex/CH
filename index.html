@@ -31,11 +31,11 @@
     </div>
     <div id="tags">
         <ul class="nav nav-pills nav-justified" role="tablist" >
-            <li class="active" style="border-radius: 0px" id="tuser"role="presentation"><a style="border-radius: 0px" href="#user" data-toggle="tab">Users</a></li>
-            <li role="presentation"><a href="#page" style="border-radius: 0px" id="tpage" data-toggle="tab">Pages</a></li>
-            <li role="presentation"><a href="#event" style="border-radius: 0px" id="tevent" data-toggle="tab">Events</a></li>
-            <li role="presentation"><a href="#place" style="border-radius: 0px" id="tplace" data-toggle="tab">Places</a></li>
-            <li role="presentation"><a href="#group" style="border-radius: 0px" id="tgroup" data-toggle="tab">Groups</a></li>
+            <li class="active" style="border-radius: 0px" id="tuser"role="presentation" ng-click="goback()"><a style="border-radius: 0px" href="#user" data-toggle="tab">Users</a></li>
+            <li role="presentation" ng-click="goback()"><a href="#page" style="border-radius: 0px" id="tpage" data-toggle="tab">Pages</a></li>
+            <li role="presentation" ng-click="goback()"><a href="#event" style="border-radius: 0px" id="tevent" data-toggle="tab">Events</a></li>
+            <li role="presentation" ng-click="goback()"><a href="#place" style="border-radius: 0px" id="tplace" data-toggle="tab">Places</a></li>
+            <li role="presentation" ng-click="goback()"><a href="#group" style="border-radius: 0px" id="tgroup" data-toggle="tab">Groups</a></li>
             <li role="presentation" ng-click="showfav()"><a href="#favourite" style="border-radius: 0px" id="tfavourite" data-toggle="tab">Favourites</a></li>
         </ul>
     </div>
@@ -253,7 +253,7 @@
 <!--detail-->
     <div id="details">
         <div id="details-head">
-            <button class="btn btn-default" type="button" style="position: relative;float: left"><span class="glyphicon glyphicon-chevron-left"></span>Back</button>
+            <button class="btn btn-default" type="button" style="position: relative;float: left" ng-click="goback()"><span class="glyphicon glyphicon-chevron-left"></span>Back</button>
             <button class="btn btn-default" type="button"  style="position: relative;float: right"  ng-click="shareFB()"><img src="http://cs-server.usc.edu:45678/hw/hw8/images/facebook.png" width="15px"></button>
 
             <!--<span ng-if="user.favored"class="glyphicon glyphicon-star" id="{{user.id}}" style="color: gold; "> </span>-->
@@ -280,7 +280,6 @@
                             No Data Found.
                         </div>
                         <div class="well"  ng-if="albums!='' ">
-
                             <div class="panel-group" id="accordion">
                                 <div ng-if='0<albums.length' class="panel panel-default">
                                     <div class="panel-heading">

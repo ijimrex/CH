@@ -323,6 +323,7 @@ app.controller('fbController', function($scope,$http) {
     }
     $scope.showfav=function () {
         document.getElementById('tc').style.display='block'
+        $scope.goback()
     }
 
 
@@ -448,7 +449,13 @@ app.controller('fbController', function($scope,$http) {
 
     }
 
-    $scope.goback=f
+    $scope.goback=function () {
+        hide('details')
+        hide('detail-albums')
+        hide('detail-posts')
+        show('tc')
+
+    }
 
     $scope.detailsearch=function (id,name,picurl,type)  {
         hide('tc')
