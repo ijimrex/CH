@@ -53,6 +53,7 @@
 <!--user-->
     <!--{{placepage.pre}}-->
     <!--{{placepage.next}}-->
+    <!--{{detailfavored}}-->
     <div class="tab-content" id="tc">
     <div id="user" class="tab-pane fade in active">
         <table class="table">
@@ -76,7 +77,7 @@
                     <span ng-if="user.favored"class="glyphicon glyphicon-star" id="{{user.id}}" style="color: gold; "> </span>
                     <span ng-if="!user.favored" class="glyphicon glyphicon-star-empty" id="{{user.id}}"> </span>
                 </button></td>
-                <td><button class="btn btn-default" type="button" ng-click="detailsearch(user.id,user.name,user.picurl)"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
+                <td><button class="btn btn-default" type="button" ng-click="detailsearch(user.id,user.name,user.picurl,'user')"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
             </tr>
             </tbody>
         </table>
@@ -110,7 +111,7 @@
                     <span ng-if="page.favored"class="glyphicon glyphicon-star" id="{{page.id}}" style="color: gold; "> </span>
                     <span ng-if="!page.favored" class="glyphicon glyphicon-star-empty" id="{{page.id}}"> </span>
                 </button></td>
-                <td><button class="btn btn-default" type="button" ng-click="detailsearch(page.id,page.name,page.picurl)"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
+                <td><button class="btn btn-default" type="button" ng-click="detailsearch(page.id,page.name,page.picurl,'page')"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
             </tr>
             </tbody>
         </table>
@@ -144,7 +145,7 @@
                     <span ng-if="event.favored"class="glyphicon glyphicon-star" id="{{event.id}}" style="color: gold; "> </span>
                     <span ng-if="!event.favored" class="glyphicon glyphicon-star-empty" id="{{event.id}}"> </span>
                 </button></td>
-                <td><button class="btn btn-default" type="button" ng-click="detailsearch(event.id,event.name,event.picurl)"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
+                <td><button class="btn btn-default" type="button" ng-click="detailsearch(event.id,event.name,event.picurl,'event')"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
             </tr>
             </tbody>
         </table>
@@ -178,7 +179,7 @@
                     <span ng-if="place.favored"class="glyphicon glyphicon-star" id="{{place.id}}" style="color: gold; "> </span>
                     <span ng-if="!place.favored" class="glyphicon glyphicon-star-empty" id="{{place.id}}"> </span>
                 </button></td>
-                <td><button class="btn btn-default" type="button" ng-click="detailsearch(place.id,place.name,place.picurl)"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
+                <td><button class="btn btn-default" type="button" ng-click="detailsearch(place.id,place.name,place.picurl,'place')"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
             </tr>
             </tbody>
         </table>
@@ -210,7 +211,7 @@
                     <span ng-if="group.favored"class="glyphicon glyphicon-star" id="{{group.id}}" style="color: gold; "> </span>
                     <span ng-if="!group.favored" class="glyphicon glyphicon-star-empty" id="{{group.id}}"> </span>
                 </button></td>
-                <td><button class="btn btn-default" type="button" ng-click="detailsearch(group.id,group.name,group.picurl)"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
+                <td><button class="btn btn-default" type="button" ng-click="detailsearch(group.id,group.name,group.picurl,'group')"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
             </tr>
             </tbody>
         </table>
@@ -241,7 +242,7 @@
                 <td>{{ fav.name }}</td>
                 <td>{{fav.type}}</td>
                 <td><button class="btn btn-default" type="button" ng-click="trash(fav)" ><span class="glyphicon glyphicon-trash"></span></button></td>
-                <td><button class="btn btn-default" type="button>" ng-click="detailsearch(fav.id,fav.name,fav.picurl)"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
+                <td><button class="btn btn-default" type="button>" ng-click="detailsearch(fav.id,fav.name,fav.picurl,'favourite')"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
             </tr>
             </tbody>
         </table>
@@ -256,9 +257,12 @@
             <button class="btn btn-default" type="button"  style="position: relative;float: right"  ng-click=""><img src="http://cs-server.usc.edu:45678/hw/hw8/images/facebook.png" width="15px"></button>
 
             <!--<span ng-if="user.favored"class="glyphicon glyphicon-star" id="{{user.id}}" style="color: gold; "> </span>-->
-            <button class="btn btn-default" type="button"  style="position: relative;float: right;margin-right: 20px" ng-click="storage(user.id,'user',user)">
-            <span class="glyphicon glyphicon-star-empty" > </span>
+
+            <button class="btn btn-default" type="button"  style="position: relative;float: right;margin-right: 20px" ng-click="changedetail()">
+                <span ng-if="detailfavored" class="glyphicon glyphicon-star" style="color: gold; "></span>
+                <span ng-if="!detailfavored"class="glyphicon glyphicon-star-empty" > </span>
             </button>
+
         </div>
 
         <div id="details-body">

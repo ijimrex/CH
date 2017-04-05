@@ -29,6 +29,11 @@ app.controller('fbController', function($scope,$http) {
     //details
     $scope.albums=""
     $scope.posts=""
+    $scope.detailid=""
+    $scope.detailtype=""
+    // $scope.detailfavored=false
+    $scope.fid=new Array()
+
 
 
     getall()
@@ -70,7 +75,7 @@ app.controller('fbController', function($scope,$http) {
     }
 
     function parseData2(data) {
-           // console.log(data)
+        // console.log(data)
         var temp=Array()
         var len=data.length;
         for (var i=0;i<len;i++){
@@ -104,7 +109,7 @@ app.controller('fbController', function($scope,$http) {
             else
                 $scope.userpage={next:"",pre:false,nex:false}
             if (response['data']['event']['paging'])
-            $scope.eventpage={next:response['data']['event']['paging']['next'],pre:false,nex:true}
+                $scope.eventpage={next:response['data']['event']['paging']['next'],pre:false,nex:true}
             else
                 $scope.eventpage={next:"",pre:false,nex:false}
             if (response['data']['page']['paging'])
@@ -116,7 +121,7 @@ app.controller('fbController', function($scope,$http) {
             else
                 $scope.placepage={next:"",pre:false,nex:false}
             if (response['data']['group']['paging'])
-            $scope.grouppage ={next:response['data']['group']['paging']['next'],pre:false,nex:true}
+                $scope.grouppage ={next:response['data']['group']['paging']['next'],pre:false,nex:true}
             else
                 $scope.grouppage={next:"",pre:false,nex:false}
 
@@ -126,7 +131,7 @@ app.controller('fbController', function($scope,$http) {
             console.log('http error')
         });
     }
- //~pagination
+    //~pagination
 //user
     $scope.usernextpage=function () {
         $http({
@@ -277,7 +282,7 @@ app.controller('fbController', function($scope,$http) {
         getall()
         all.favored=true
         var temp={id:ids,type:type,all:all}
-            // console.log('stor'+temp)
+        // console.log('stor'+temp)
         if ($scope.fid.indexOf(ids)==-1){
             $scope.favstorage.push(temp)
             $scope.fall=parseData2($scope.favstorage)
@@ -287,7 +292,9 @@ app.controller('fbController', function($scope,$http) {
             // console.log($scope.fall)
             // document.getElementById(ids).className='glyphicon glyphicon-star'
             // document.getElementById(ids).style.color='gold'
-            
+        if($scope.detailid==ids){
+            $scope.detailfavored=true
+        }
         }
         else {
             // alert('in')
@@ -303,6 +310,10 @@ app.controller('fbController', function($scope,$http) {
             // console.log(tojson)
             // console.log($scope.fall)
             localStorage.item=tojson;
+            if($scope.detailid==ids){
+                $scope.detailfavored=false
+            }
+
             // document.getElementById(ids).className='glyphicon glyphicon-star-empty'
             // document.getElementById(ids).style.color='black'
 
@@ -311,7 +322,7 @@ app.controller('fbController', function($scope,$http) {
 
     }
     $scope.showfav=function () {
-       document.getElementById('tc').style.display='block'
+        document.getElementById('tc').style.display='block'
     }
 
 
@@ -328,10 +339,10 @@ app.controller('fbController', function($scope,$http) {
         for (var i=0;i<usersleng;i++){
             // console.log($scope.users[i].id)
             // console.log(fav.id)
-                if ($scope.users[i].id==fav.id){
-                    $scope.users[i].favored=false
+            if ($scope.users[i].id==fav.id){
+                $scope.users[i].favored=false
 
-                }
+            }
 
         }
         for (var i=0;i<pagesleng;i++){
@@ -377,10 +388,84 @@ app.controller('fbController', function($scope,$http) {
 
     }
     //details
-    $scope.detailsearch=function (id,name,picurl)  {
+    $scope.changedetail=function () {
+        var all=""
+        switch ($scope.detailtype){
+            case 'user':
+                var type=$scope.detailtype
+                var ids=$scope.detailid
+                var len=$scope.users.length
+                for (var i=0;i<len;i++){
+                    if (ids==$scope.users[i].id)
+                        all=$scope.users[i]
+                }
+                $scope.storage(ids,type,all)
+                break;
+            case 'page':
+                var type=$scope.detailtype
+                var ids=$scope.detailid
+                var len=$scope.pages.length
+                for (var i=0;i<len;i++){
+                    if (ids==$scope.pages[i].id)
+                        all=$scope.pages[i]
+                }
+                $scope.storage(ids,type,all)
+
+                break;
+            case 'event':
+                var type=$scope.detailtype
+                var ids=$scope.detailid
+                var len=$scope.events.length
+                for (var i=0;i<len;i++){
+                    if (ids==$scope.events[i].id)
+                        all=$scope.events[i]
+                }
+                $scope.storage(ids,type,all)
+                break;
+            case 'group':
+                var type=$scope.detailtype
+                var ids=$scope.detailid
+                var len=$scope.groups.length
+                for (var i=0;i<len;i++){
+                    if (ids==$scope.groups[i].id)
+                        all=$scope.groups[i]
+                }
+                $scope.storage(ids,type,all)
+                break;
+            case 'place':
+                var type=$scope.detailtype
+                var ids=$scope.detailid
+                var len=$scope.places.length
+                for (var i=0;i<len;i++){
+                    if (ids==$scope.places[i].id)
+                        all=$scope.places[i]
+                }
+                $scope.storage(ids,type,all)
+                break;
+            default: console.log('error type')
+
+        }
+
+    }
+
+    $scope.detailsearch=function (id,name,picurl,type)  {
         // hide('tc')
         // show('progressbar')
-        console.log('id='+id)
+        // console.log('id='+id)
+        getall()
+        $scope.detailid=id
+        $scope.detailtype=type
+        // console.log($scope.fid)
+        // console.log(id)
+        $scope.detailfavored=false
+        for (var i=0;i<$scope.fid.length;i++){
+            // console.log($scope.fid[i])
+            // console.log(id)
+            if (id==$scope.fid[i])
+            {$scope.detailfavored=true
+                break}
+        }
+        // console.log($scope.detailfavored)
         $http({
             method: 'GET',
             url: 'fb.php?&detailid='+id
@@ -389,17 +474,17 @@ app.controller('fbController', function($scope,$http) {
             if (response['data']['albums']){
                 $scope.albums=response['data']['albums']['data']
                 // console.log($scope.albums)
-            var len1=$scope.albums.length
+                var len1=$scope.albums.length
 
                 for (var i=0;i<len1;i++){
                     $scope.albums[i].showid='#'+$scope.albums[i].id
                     if ($scope.albums[i].photos){
-                    var len2=$scope.albums[i].photos.data.length
-                    for (var j=0;j<len2;j++){
+                        var len2=$scope.albums[i].photos.data.length
+                        for (var j=0;j<len2;j++){
 
-                        $scope.albums[i].photos.data[j].picture='https://graph.facebook.com/v2.8/'+$scope.albums[i].photos.data[j].id+'/picture?access_token=EAAaKv7Esg68BAKvdA2GOIHxfutua0dL6qZBZAZCLSgB0Fz1dXidLTmOBJOjDb2Bda9d70v1vFnMnvZBEgAum52iGVBJkjlzI0EdU7ZAcjhFZCeFfjyFMV1SyLxMdGHnq3sPao63VYfEOutfmAXtUk71zllLxhpS7QZD'
-                        // console.log($scope.albums[i].photos.data[j].picture)
-                    }
+                            $scope.albums[i].photos.data[j].picture='https://graph.facebook.com/v2.8/'+$scope.albums[i].photos.data[j].id+'/picture?access_token=EAAaKv7Esg68BAKvdA2GOIHxfutua0dL6qZBZAZCLSgB0Fz1dXidLTmOBJOjDb2Bda9d70v1vFnMnvZBEgAum52iGVBJkjlzI0EdU7ZAcjhFZCeFfjyFMV1SyLxMdGHnq3sPao63VYfEOutfmAXtUk71zllLxhpS7QZD'
+                            // console.log($scope.albums[i].photos.data[j].picture)
+                        }
                     }
 
                     else if (!$scope.albums[i].photos) {
@@ -409,8 +494,8 @@ app.controller('fbController', function($scope,$http) {
                         $scope.albums[i].photos.data[0].picture = 'https://graph.facebook.com/v2.8/' + $scope.albums[i].photos.data[j].id+ '/picture?access_token=EAAaKv7Esg68BAKvdA2GOIHxfutua0dL6qZBZAZCLSgB0Fz1dXidLTmOBJOjDb2Bda9d70v1vFnMnvZBEgAum52iGVBJkjlzI0EdU7ZAcjhFZCeFfjyFMV1SyLxMdGHnq3sPao63VYfEOutfmAXtUk71zllLxhpS7QZD'
                         $scope.albums[i].photos.data[0].picurl = 'https://graph.facebook.com/v2.8/' + $scope.albums[i].photos.data[j].id+ '/picture?access_token=EAAaKv7Esg68BAKvdA2GOIHxfutua0dL6qZBZAZCLSgB0Fz1dXidLTmOBJOjDb2Bda9d70v1vFnMnvZBEgAum52iGVBJkjlzI0EdU7ZAcjhFZCeFfjyFMV1SyLxMdGHnq3sPao63VYfEOutfmAXtUk71zllLxhpS7QZD'
                     }
-                    }
-                console.log($scope.albums)
+                }
+                // console.log($scope.albums)
             }
 
 
@@ -429,7 +514,7 @@ app.controller('fbController', function($scope,$http) {
                 // }
             }
             else $scope.posts=""
-             // console.log($scope.posts)
+            // console.log($scope.posts)
 
 
             // hide('progressbar')
