@@ -31,6 +31,8 @@ app.controller('fbController', function($scope,$http) {
     $scope.posts=""
     $scope.detailid=""
     $scope.detailtype=""
+    $scope.detailpicurl=""
+    $scope.detailname=""
     // $scope.detailfavored=false
     $scope.fid=new Array()
 
@@ -468,6 +470,8 @@ app.controller('fbController', function($scope,$http) {
         getall()
         $scope.detailid=id
         $scope.detailtype=type
+        $scope.detailpicurl=picurl
+        $scope.detailname=name
         // console.log($scope.fid)
         // console.log(id)
         $scope.detailfavored=false
@@ -544,20 +548,29 @@ app.controller('fbController', function($scope,$http) {
         });
     }
 
-//FBpost
+
+
     $scope.shareFB=function () {
+        FB.init({
+            appId: '1841405776135087', // App ID : Insert the APP ID of the APP you created here
+            status: true,
+            xfbml : true,
+        });
         FB.ui({
             app_id: '1841405776135087',
             method: 'feed',
-            link: window.location.href,
-            picture: Url_of_the_Picture,
-            name: Name_of_the_Object,
-            caption: The_Caption,
-        }, function(response){
-            if (response && !response.error_message)
-                Success
-            else
-                Failed
+            // link: window.location.href,
+            link:"",
+            picture: $scope.detailpicurl,
+            name: $scope.detailname,
+            caption: 'USC CSCI571',
+        }, function (response) {
+            if (response && !response.error_message){
+                alert("Posted Successfully");
+            }
+            else{
+                alert("Not Posted");
+            }
         });
 
     }
