@@ -6,8 +6,8 @@
     //     $data=$res["data"];
     //     return $data
     // }
-require_once __DIR__ . '/php-graph-sdk-5.0.0/src/Facebook/autoload.php';
-
+    require_once __DIR__ . '/php-graph-sdk-5.0.0/src/Facebook/autoload.php';
+    if (!isset($_GET['detailid'])){
     $keyword=$_GET["keyword"];
     $type=$_GET["type"];
     $lat=$_GET["lat"];
@@ -84,6 +84,20 @@ require_once __DIR__ . '/php-graph-sdk-5.0.0/src/Facebook/autoload.php';
 //            //***TODO: consider not exists
            // $request = $fb->request('GET','/search',['q'=>$keyword,'type'=>'place','center'=>$lat.','.$lng,'distance'=>$distance,'fields'=>$fields]);
 //            break;
-
+     }
+    else{
+        // echo "in";
+        $id=$_GET["detailid"];
+        $fb = new Facebook\Facebook([
+            'app_id' => '1841405776135087',
+            'app_secret' => 'a9147fbfbddecc707678b9c25533d6b0',
+            'default_graph_version' => 'v2.8',
+        ]);
+        $fb->setDefaultAccessToken("EAAaKv7Esg68BAKvdA2GOIHxfutua0dL6qZBZAZCLSgB0Fz1dXidLTmOBJOjDb2Bda9d70v1vFnMnvZBEgAum52iGVBJkjlzI0EdU7ZAcjhFZCeFfjyFMV1SyLxMdGHnq3sPao63VYfEOutfmAXtUk71zllLxhpS7QZD");
+        $request = $fb->request('GET',$id,['fields'=>'id,name,albums.limit(5){name,photos.limit(2){name, picture.width(700).height(700)}},posts.limit(5)']);
+        $response=$fb->getClient()->sendRequest($request);
+        $res=$response->getDecodedBody();
+        echo json_encode($res);
+     }
 
 ?>

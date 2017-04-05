@@ -26,6 +26,10 @@ app.controller('fbController', function($scope,$http) {
     $scope.favstorage=new Array()
     $scope.fall=""
 
+    //details
+    $scope.albums=""
+    $scope.posts=""
+
 
     getall()
     // console.log($scope.favstorage)
@@ -95,12 +99,26 @@ app.controller('fbController', function($scope,$http) {
             $scope.pages=parseData(response['data']['page']['data'])
             $scope.places=parseData(response['data']['place']['data'])
             $scope.groups=parseData(response['data']['group']['data'])
-
-            $scope.userpage={next:response['data']['user']['paging']['next'],pre:false,nex:true}
+            if (response['data']['user']['paging'])
+                $scope.userpage={next:response['data']['user']['paging']['next'],pre:false,nex:true}
+            else
+                $scope.userpage={next:"",pre:false,nex:false}
+            if (response['data']['event']['paging'])
             $scope.eventpage={next:response['data']['event']['paging']['next'],pre:false,nex:true}
-            $scope.pagepage={next:response['data']['page']['paging']['next'],pre:false,nex:true}
-            $scope.placepage={next:response['data']['place']['paging']['next'],pre:false,nex:true}
+            else
+                $scope.eventpage={next:"",pre:false,nex:false}
+            if (response['data']['page']['paging'])
+                $scope.pagepage={next:response['data']['page']['paging']['next'],pre:false,nex:true}
+            else
+                $scope.pagepage={next:"",pre:false,nex:false}
+            if (response['data']['place']['paging'])
+                $scope.placepage={next:response['data']['place']['paging']['next'],pre:false,nex:true}
+            else
+                $scope.placepage={next:"",pre:false,nex:false}
+            if (response['data']['group']['paging'])
             $scope.grouppage ={next:response['data']['group']['paging']['next'],pre:false,nex:true}
+            else
+                $scope.grouppage={next:"",pre:false,nex:false}
 
             hide('progressbar')
             show('tc')
@@ -264,9 +282,9 @@ app.controller('fbController', function($scope,$http) {
             $scope.favstorage.push(temp)
             $scope.fall=parseData2($scope.favstorage)
             var tojson=JSON.stringify( $scope.favstorage );
-            console.log(tojson)
+            // console.log(tojson)
             localStorage.item=tojson;
-            console.log($scope.fall)
+            // console.log($scope.fall)
             // document.getElementById(ids).className='glyphicon glyphicon-star'
             // document.getElementById(ids).style.color='gold'
             
@@ -282,8 +300,8 @@ app.controller('fbController', function($scope,$http) {
             $scope.fid.splice(index,1)
             $scope.fall=parseData2($scope.favstorage)
             var tojson=JSON.stringify( $scope.favstorage );
-            console.log(tojson)
-            console.log($scope.fall)
+            // console.log(tojson)
+            // console.log($scope.fall)
             localStorage.item=tojson;
             // document.getElementById(ids).className='glyphicon glyphicon-star-empty'
             // document.getElementById(ids).style.color='black'
@@ -347,9 +365,9 @@ app.controller('fbController', function($scope,$http) {
         $scope.fid.splice(index,1)
         $scope.fall=parseData2($scope.favstorage)
         var tojson=JSON.stringify( $scope.favstorage );
-        console.log($scope.users)
+        // console.log($scope.users)
         localStorage.item=tojson;
-        console.log($scope.fall)
+        // console.log($scope.fall)
 
     }
     $scope.refresh=function () {
@@ -359,5 +377,39 @@ app.controller('fbController', function($scope,$http) {
 
     }
     //details
+    $scope.detailsearch=function (id)  {
+        // hide('tc')
+        // show('progressbar')
+        $http({
+            method: 'GET',
+            url: 'fb.php?&detailid='+id
+        }).then(function successCallback(response) {
+            if (response['data']['albums'])
+                $scope.albums=response['data']['albums']
+            else $scope.albums=""
+            if (response['data']['posts'])
+                $scope.posts=response['data']['posts']
+            else $scope.posts=""
+             // console.log($scope.albums)
+
+//                console.log(response['data']['user']['data'])
+//             $scope.users=parseData(response['data']['user']['data'])
+//             $scope.events=parseData(response['data']['event']['data'])
+//             $scope.pages=parseData(response['data']['page']['data'])
+//             $scope.places=parseData(response['data']['place']['data'])
+//             $scope.groups=parseData(response['data']['group']['data'])
+//
+//             $scope.userpage={next:response['data']['user']['paging']['next'],pre:false,nex:true}
+//             $scope.eventpage={next:response['data']['event']['paging']['next'],pre:false,nex:true}
+//             $scope.pagepage={next:response['data']['page']['paging']['next'],pre:false,nex:true}
+//             $scope.placepage={next:response['data']['place']['paging']['next'],pre:false,nex:true}
+//             $scope.grouppage ={next:response['data']['group']['paging']['next'],pre:false,nex:true}
+
+            // hide('progressbar')
+            // show('tc')
+        }, function errorCallback(response) {
+            console.log('http error')
+        });
+    }
 
 });

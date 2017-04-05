@@ -76,7 +76,7 @@
                     <span ng-if="user.favored"class="glyphicon glyphicon-star" id="{{user.id}}" style="color: gold; "> </span>
                     <span ng-if="!user.favored" class="glyphicon glyphicon-star-empty" id="{{user.id}}"> </span>
                 </button></td>
-                <td><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
+                <td><button class="btn btn-default" type="button" ng-click="detailsearch(user.id)"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
             </tr>
             </tbody>
         </table>
@@ -110,7 +110,7 @@
                     <span ng-if="page.favored"class="glyphicon glyphicon-star" id="{{page.id}}" style="color: gold; "> </span>
                     <span ng-if="!page.favored" class="glyphicon glyphicon-star-empty" id="{{page.id}}"> </span>
                 </button></td>
-                <td><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
+                <td><button class="btn btn-default" type="button" ng-click="detailsearch(page.id)"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
             </tr>
             </tbody>
         </table>
@@ -266,6 +266,14 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Albums</div>
                     <div class="panel-body">
+                        <div class="well" style="background-color: yellow " ng-if="albums=='' ">
+                            No Data Found.
+                        </div>
+                        <div class="well" style="background-color: yellow " ng-if="albums!='' ">
+                            <div ng-repeat
+
+                        </div>
+
 
 
                     </div>
@@ -279,7 +287,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Posts</div>
                     <div class="panel-body">
-                        Panel content
+                        <div class="well" style="background-color: yellow " ng-if="posts==''">
+                            No Data Found.
+                        </div>
                     </div>
                 </div>
 
