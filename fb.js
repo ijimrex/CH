@@ -245,11 +245,26 @@ app.controller('fbController', function($scope,$http) {
             url: $scope.eventpage['next']
         }).then(function successCallback(response) {
             $scope.events=parseData(response['data']['data'])
-            console.log(response['data']['paging'])
+            // console.log(response['data']['paging'])
             if (response['data'].hasOwnProperty('paging')&& response['data']['paging']['next']!=undefined && response['data']['paging']['next']!='')
-            { $scope.eventpage={next:response['data']['paging']['next'],nex:true,pre:false}}
+            { $scope.eventpage={next:response['data']['paging']['next'],previous:response['data']['paging']['previous'],nex:true,pre:true}}
             else{
-                $scope.eventpage={next:"",nex:false,pre:false}
+                $scope.eventpage={next:"",previous:response['data']['paging']['previous'],nex:false,pre:true}
+            }
+        }, function errorCallback(response) {
+            console.log('http error')
+        });
+    }
+    $scope.eventpreviouspage=function () {
+        $http({
+            method: 'GET',
+            url: $scope.eventpage['previous']
+        }).then(function successCallback(response) {
+            $scope.envents=parseData(response['data']['data'])
+            if (response['data']['paging']!=undefined&&response['data']['paging']['previous']!=undefined && response['data']['paging']['previous']!='')
+            { $scope.enventpage={next:response['data']['paging']['next'],previous:response['data']['paging']['previous'],nex:true,pre:true}}
+            else{
+                $scope.enventpage={next:response['data']['paging']['next'],previous:"",nex:true,pre:false}
             }
         }, function errorCallback(response) {
             console.log('http error')
@@ -584,5 +599,21 @@ app.controller('fbController', function($scope,$http) {
         });
 
     }
+    // slide
+    $scope.lst = [];
+    $scope.master = [1,2];
 
+    $scope.lst.unshift($scope.master[Math.floor((Math.random()*10)+1)]);
+
+    $scope.clk = function() { clik();}
+    var sl=0
+    function clik() {
+        //alert('here');
+
+        $scope.lst.unshift($scope.master[sl]);
+        $scope.lst.pop();
+        if (sl<1) sl++
+        else sl=0
+
+    }
 });

@@ -62,7 +62,8 @@
     <!--{{detailfavored}}-->
     <div class="tab-content" id="tc">
     <div id="user" class="tab-pane fade in active">
-        <table class="table">
+        <div class="table-responsive">
+        <table class="table table-hover ">
             <thead>
             <tr>
                 <th>#</th>
@@ -86,7 +87,7 @@
                 <td><button class="btn btn-default" type="button" ng-click="detailsearch(user.id,user.name,user.picurl,'user')"><span class="glyphicon glyphicon-chevron-right" ></span></button></td>
             </tr>
             </tbody>
-        </table>
+        </table></div>
         <ul class="pager">
             <li ng-if="userpage.pre" ng-click="userpreviouspage()"><a href="#user" >Previous</a></li>
             <li ng-if="userpage.nex" ng-click="usernextpage()"><a href="#user" >Next</a></li>
@@ -96,7 +97,8 @@
 <!--page-->
 
     <div id="page"  class="tab-pane fade">
-        <table class="table">
+        <div class="table-responsive">
+        <table class="table table-hover ">
             <thead>
             <tr>
                 <th>#</th>
@@ -121,6 +123,7 @@
             </tr>
             </tbody>
         </table>
+        </div>
         <ul class="pager">
             <li ng-if="pagepage.pre" ng-click="pagepreviouspage()"><a href="#page" >Previous</a></li>
             <li ng-if="pagepage.nex" ng-click="pagenextpage()"><a href="#page" >Next</a></li>
@@ -131,7 +134,8 @@
 
 <!--event-->
     <div id="event" class="tab-pane fade">
-        <table class="table">
+        <div class="table-responsive">
+        <table class="table table-hover ">
             <thead>
             <tr>
                 <th>#</th>
@@ -155,16 +159,17 @@
             </tr>
             </tbody>
         </table>
+        </div>
         <ul class="pager">
-            <!--<li ng-if="eventpage.pre" ng-click="eventpreviouspage()"><a href="#event" >Previous</a></li>-->
+            <li ng-if="eventpage.pre" ng-click="eventpreviouspage()"><a href="#event" >Previous</a></li>
             <li ng-if="eventpage.nex" ng-click="eventnextpage()"><a href="#event" >Next</a></li>
         </ul>
 
     </div>
 <!--place-->
     <div id="place" class="tab-pane fade">
-
-        <table class="table">
+        <div class="table-responsive">
+        <table class="table table-hover ">
             <thead>
             <tr>
                 <th>#</th>
@@ -189,6 +194,7 @@
             </tr>
             </tbody>
         </table>
+        </div>
         <ul class="pager">
             <!--<li ng-if="placepage.pre" ng-click="placepreviouspage()"><a href="#place" >Previous</a></li>-->
             <li ng-if="placepage.nex" ng-click="placenextpage()"><a href="#place" >Next</a></li>
@@ -196,7 +202,8 @@
     </div>
 <!--group        -->
     <div id="group" class="tab-pane fade">
-        <table class="table">
+        <div class="table-responsive">
+        <table class="table table-hover ">
             <thead>
             <tr>
                 <th>#</th>
@@ -221,6 +228,7 @@
             </tr>
             </tbody>
         </table>
+        </div>
         <ul class="pager">
             <li ng-if="grouppage.pre" ng-click="grouppreviouspage()"><a href="#group" >Previous</a></li>
             <li ng-if="grouppage.nex" ng-click="groupnextpage()"><a href="#group" >Next</a></li>
@@ -229,8 +237,9 @@
     </div>
 <!--facourite-->
     <div id="favourite" class="tab-pane fade" >
+        <div class="table-responsive">
 
-        <table class="table">
+        <table class="table table-hover ">
             <thead>
             <tr>
                 <th>#</th>
@@ -290,7 +299,7 @@
                         <div class="well" style="background-color: antiquewhite " ng-if="albums=='' ">
                             No Data Found.
                         </div>
-                        <div class="well"  ng-if="albums!='' ">
+                        <div  ng-if="albums!='' ">
                             <div class="panel-group" id="accordion">
                                 <div ng-if='0<albums.length' class="panel panel-default">
                                     <div class="panel-heading">
@@ -417,7 +426,7 @@
                         <div class="well" style="background-color: antiquewhite;width: 100%" ng-if="posts==''" >
                             No Data Found.
                         </div>
-                        <div class="well" ng-if="posts!=''">
+                        <div  ng-if="posts!=''">
                             <div ng-repeat="post in posts">
                                 <div class="panel panel-default">
                                 <div class="panel-body">
