@@ -13,6 +13,7 @@
     border-bottom: solid;
     border-color: #337ab7;
     border-width: 2px;
+    margin-top: -20px;
 }
 .subtag{
     border-radius: 0px;
@@ -55,6 +56,7 @@
 #details-body-left{
     position: relative;;
     float: left;
+    width: 100%;
     /*width: 48%;*/
     /*height: 500px;*/
     /*margin-right:*/
@@ -69,3 +71,6 @@
     /*margin-right:*/
     /*background-color: aquamarine;*/
 }
+/*#tags li,ul{*/
+    /*height: 40px;*/
+/*}*/

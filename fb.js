@@ -22,6 +22,8 @@ app.controller('fbController', function($scope,$http) {
     $scope.placepage=""
     $scope.reset=function (){
         $scope.keyword =""
+        hide('tc')
+        hide('details')
     }
     $scope.favstorage=new Array()
     $scope.fall=""
@@ -35,7 +37,7 @@ app.controller('fbController', function($scope,$http) {
     $scope.detailname=""
     // $scope.detailfavored=false
     $scope.fid=new Array()
-
+    var isempty=false
 
 
     getall()
@@ -50,6 +52,11 @@ app.controller('fbController', function($scope,$http) {
         document.getElementById(id).style.display='none'
 
     }
+    // $scope.sinvalid=function () {
+    //     // hide('progressbar')
+    //     // hide('tc')
+    //     // isempty=true
+    // }
 
     function parseData(data) {
 //            console.log(data)
@@ -94,6 +101,8 @@ app.controller('fbController', function($scope,$http) {
     }
 
     $scope.search=function () {
+        // if (isempty){
+        if($scope.keyword!=""){
         hide('tc')
         show('progressbar')
         $http({
@@ -132,6 +141,7 @@ app.controller('fbController', function($scope,$http) {
         }, function errorCallback(response) {
             console.log('http error')
         });
+    }
     }
     //~pagination
 //user
