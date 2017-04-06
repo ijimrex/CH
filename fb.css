@@ -104,3 +104,30 @@
     left:-100%;
     line-height: 10%;
 }
+
+
+
+.slide_panel{
+    overflow: auto;
+    position: absolute;
+    width:100%;
+    top: 50px;
+}
+
+.class1{
+    right: 0;
+}
+
+.class2{
+    right: 1000px;
+}
+
+
+.class1-add, .class1-remove {
+    transition: all ease-in-out 1s;
+}
+
+
+.class2-add, .class2-remove  {
+    transition: all ease-in-out 1s;
+}

@@ -37,6 +37,7 @@ app.controller('fbController', function($scope,$http) {
     $scope.detailname=""
     // $scope.detailfavored=false
     $scope.fid=new Array()
+    $scope.jd=false
     var isempty=false
 
 
@@ -417,6 +418,7 @@ app.controller('fbController', function($scope,$http) {
     }
     //details
     $scope.changedetail=function () {
+
         var all=""
         switch ($scope.detailtype){
             case 'user':
@@ -486,6 +488,7 @@ app.controller('fbController', function($scope,$http) {
 
     $scope.detailsearch=function (id,name,picurl,type)  {
         hide('tc')
+        $scope.jd=true
         show('details')
         show('progressbar-left')
         show('progressbar-right')
