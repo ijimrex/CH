@@ -55,7 +55,7 @@
 #details-body-left{
     position: relative;;
     float: left;
-    width: 48%;
+    /*width: 48%;*/
     /*height: 500px;*/
     /*margin-right:*/
     /*background-color: #337ab7;*/
@@ -64,7 +64,7 @@
 #details-body-right{
     position: relative;;
     float: right;
-    width: 48%;
+    width: 100%;
     /*height: 500px;*/
     /*margin-right:*/
     /*background-color: aquamarine;*/
