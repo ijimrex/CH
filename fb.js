@@ -602,6 +602,13 @@ app.controller('fbController', function($scope,$http) {
             // hide('progressbar')
             // show('tc')
         }, function errorCallback(response) {
+            $scope.posts=""
+            $scope.albums=""
+            hide('progressbar-left')
+            hide('progressbar-right')
+            show('detail-albums')
+            show('detail-posts')
+            // console.log(id)
             console.log('http error')
         });
     }
