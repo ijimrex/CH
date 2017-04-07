@@ -488,8 +488,9 @@ app.controller('fbController', function($scope,$http) {
 
     $scope.detailsearch=function (id,name,picurl,type)  {
         hide('tc')
-        $scope.jd=true
         show('details')
+        $scope.jd=true
+
         show('progressbar-left')
         show('progressbar-right')
         hide('detail-albums')

@@ -25,7 +25,7 @@
                     <div class="col-md-9">
                         <form role="search" >
                             <div class="form-group" >
-                                <input ng-model="keyword" required  type="text" class="form-control" placeholder="type something..." style="border-radius: 0px;width:70%;height: 40px;position: relative;float: left">
+                                <input ng-model="keyword" required  type="text" class="form-control" placeholder="type something..." style="border-radius: 0px;width:60%;height: 40px;position: relative;float: left">
                                 <button type="submit" class="btn btn-primary"style="border-radius: 0px;position: relative;float: left;width: 8%;height: 40px;" ng-click="search()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                                 <button type="submit" class="btn btn-default"style="border-radius: 0px;position: relative;float: left; margin-left: 10px;height: 40px" ng-click="reset()" >Clear</button>
                             </div>
@@ -433,11 +433,12 @@
                                 <div class="panel-body">
                                     <div style="width: 100%;height: 50px;position: relative;">
                                         <div style="width: 40px;height: 40px;position: relative;float: left"><img style="width: 40px;height: 40px" src={{posts.picurl}}></div>
-                                        <div style="height: 40px;position: relative;float: left;margin-left: 30px"><span style="font-weight:bold">{{posts.name}}</span><br/>
+                                        <div style="position: relative;float: left;margin-left: 10px;width: 70%"><span style="font-weight:bold">{{posts.name}}</span><br/>
                                             <span style="color: grey">{{post.created_time}}</span>
                                         </div>
                                     </div>
-                                    {{post.message}}
+                                    <div style="position: relative;width: 100%;margin-top: 10px">
+                                    {{post.message}}</div>
                                 </div>
                                 </div>
                             </div>
