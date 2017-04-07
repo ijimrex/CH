@@ -26,7 +26,7 @@
                             <div class="form-group" >
                                 <input ng-model="keyword" required  type="text" class="form-control" placeholder="type something..." style="border-radius: 0px;width:60%;height: 40px;position: relative;float: left">
                                 <button type="submit" class="btn btn-primary"style="border-radius: 0px;position: relative;float: left;width: 10%;height: 40px;min-width: 40px" ng-click="search()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                                <button type="submit" class="btn btn-default"style="border-radius: 0px;position: relative;float: left; margin-left: 10px;height: 40px" ng-click="reset()" >Clear</button>
+                                <button type="button" class="btn btn-default"style="border-radius: 0px;position: relative;float: left; margin-left: 10px;height: 40px;border-color: #337ab7;color: #337ab7" ng-click="reset()" >Clear</button>
                             </div>
 
                         </form>
@@ -267,7 +267,7 @@
 
 <!--detail-->
     <div id="details" ng-show="jd">
-        <div class="container slide_panel" ng-class="{ 'class1' : jd, 'class2' : !jd }" style="width:100%">
+        <div class="container slide_panel"  style="width:100%" ng-class="{ 'cslass1' : jd, 'cslass2' : !jd }">
         <div id="details-head">
             <button class="btn btn-default" type="button" style="position: relative;float: left" ng-click="goback()"><span class="glyphicon glyphicon-chevron-left"></span>Back</button>
             <button class="btn btn-default" type="button"  style="position: relative;float: right"  ng-click="shareFB()"><img src="http://cs-server.usc.edu:45678/hw/hw8/images/facebook.png" width="15px"></button>

@@ -24,6 +24,23 @@ app.controller('fbController', function($scope,$http) {
         $scope.keyword =""
         hide('tc')
         hide('details')
+        $scope.users=""
+        $scope.pages=""
+        $scope.events=""
+        $scope.groups=""
+        $scope.places=""
+        $scope.userpage=""
+        $scope.pagepage=""
+        $scope.eventpage=""
+        $scope.grouppage=""
+        $scope.placepage=""
+        $scope.albums=""
+        $scope.posts=""
+        $scope.detailid=""
+        $scope.detailtype=""
+        $scope.detailpicurl=""
+        $scope.detailname=""
+        $scope.jd=false
     }
     $scope.favstorage=new Array()
     $scope.fall=""
@@ -567,6 +584,11 @@ app.controller('fbController', function($scope,$http) {
                 $scope.posts.picurl=picurl
                 var len2=$scope.posts.length
                 for (var i=0;i<len2;i++){
+                    if($scope.posts[i].message==undefined){
+                        if($scope.posts[i].story!=undefined)
+                            $scope.posts[i].message=$scope.posts[i].story
+                    }
+
                     $scope.posts[i].created_time=$scope.posts[i].created_time.replace(/T/,' ')
                     $scope.posts[i].created_time=$scope.posts[i].created_time.replace(/\+0000/,' ')
                 }
