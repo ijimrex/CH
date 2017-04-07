@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Latest compiled and minified CSS -->
+
+    <style>
+        .slide_panel{
+            overflow: auto;
+            position: absolute;
+            width:100%;
+            top: 50px;
+        }
+
+        .class1{
+            right: 0;
+        }
+
+        .class2{
+            right: 1000px;
+        }
+
+
+        .class1-add, .class1-remove {
+            transition: all ease-in-out 1s;
+        }
+
+
+        .class2-add, .class2-remove  {
+            transition: all ease-in-out 1s;
+        }
+    </style>
+
+
+    <!-- Latest compiled and minified JavaScript -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-animate.js'></script>
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
+
+    <title>Responsible Web Design</title>
+
+
+</head>
+
+
+<body ng-app="myApp" ng-controller="fbController" ng-init="load()">
+
+
+
+
+<button ng-click="bool=!bool">click</button>
+
+
+<div id="details" ng-show="bool" style="position:relative;padding:0 40px;">
+    <div class="container slide_panel" ng-class="{ 'class1' : bool, 'class2' : !bool }">
+
+        <div class="container" style="width:100%;height:100px;background-color:black;">
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+<script>
+    var app = angular.module('myApp', ['ngAnimate']);
+    app.controller('fbController', function($scope,$http) {
+      $scope.bool=false
+    })
+
+</script>
+
+</html>

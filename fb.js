@@ -1,7 +1,7 @@
 /**
  * Created by leijin on 3/31/17.
  */
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['ngAnimate']);
 app.controller('fbController', function($scope,$http) {
     navigator.geolocation.getCurrentPosition(function(position) {
         $scope.lat=position.coords.latitude;
@@ -45,6 +45,10 @@ app.controller('fbController', function($scope,$http) {
     // console.log($scope.favstorage)
 
 // search
+    function setdefault() {
+        $scope.jd=false
+
+    }
     function show(id){
         document.getElementById(id).style.display='block'
 
@@ -103,6 +107,7 @@ app.controller('fbController', function($scope,$http) {
 
     $scope.search=function () {
         // if (isempty){
+        setdefault()
         if($scope.keyword!=""){
         hide('tc')
         show('progressbar')
@@ -483,6 +488,8 @@ app.controller('fbController', function($scope,$http) {
         hide('detail-albums')
         hide('detail-posts')
         show('tc')
+        setdefault()
+
 
     }
 

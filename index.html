@@ -10,7 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-json/2.6.0/jquery.json.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/X.Y.Z/angular-animate.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-animate.js'></script>
 </head>
 <body>
 <div id="whole-background" ng-app="myApp" ng-controller="fbController">
@@ -267,7 +267,8 @@
 </div>
 
 <!--detail-->
-    <div id="details">
+    <div id="details" ng-show="jd">
+        <div class="container slide_panel" ng-class="{ 'class1' : jd, 'class2' : !jd }" style="width:100%">
         <div id="details-head">
             <button class="btn btn-default" type="button" style="position: relative;float: left" ng-click="goback()"><span class="glyphicon glyphicon-chevron-left"></span>Back</button>
             <button class="btn btn-default" type="button"  style="position: relative;float: right"  ng-click="shareFB()"><img src="http://cs-server.usc.edu:45678/hw/hw8/images/facebook.png" width="15px"></button>
@@ -410,11 +411,7 @@
 
             </div>
                 </div>
-
-
-
-
-            <div class="col-md-6">
+                <div class="col-md-6">
 
             <div id="details-body-right">
                 <div class="progress"  id ='progressbar-right'>
@@ -452,10 +449,9 @@
             </div>
                 </div>
 
-
+            </div>
         </div>
         </div>
-
     </div>
 </div>
 <script src="fb.js"></script>
