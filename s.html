@@ -53,11 +53,22 @@
 
 
 
-<button ng-click="bool=!bool">click</button>
+<button ng-click="bool=true back=false">click</button>
+<button ng-click="bool=false back=true">click</button>
 
 
 <div id="details" ng-show="bool" style="position:relative;padding:0 40px;">
     <div class="container slide_panel" ng-class="{ 'class1' : bool, 'class2' : !bool }">
+
+        <div class="container" style="width:100%;height:100px;background-color:black;">
+
+        </div>
+    </div>
+
+</div>
+
+<div id="details" ng-show="back" style="position:relative;padding:0 40px;">
+    <div class="container slide_panel" ng-class="{ 'class1' : back, 'class2' : !back }">
 
         <div class="container" style="width:100%;height:100px;background-color:black;">
 
