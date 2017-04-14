@@ -7,9 +7,7 @@ app.controller('fbController', function($scope,$http) {
         $scope.lat=position.coords.latitude;
         $scope.long=position.coords.longitude;;
     });
-
     $scope.keyword ="";
-//        $scope.urls='fb.php?keyword='+$scope.keyword+'&lat='+$scope.lat+'&long='+$scope.long;
     $scope.users=""
     $scope.pages=""
     $scope.events=""
@@ -20,10 +18,30 @@ app.controller('fbController', function($scope,$http) {
     $scope.eventpage=""
     $scope.grouppage=""
     $scope.placepage=""
+
+    $scope.favstorage=new Array()
+    $scope.fall=""
+    //details
+    $scope.albums=""
+    $scope.posts=""
+    $scope.detailid=""
+    $scope.detailtype=""
+    $scope.detailpicurl=""
+    $scope.detailname=""
+    // $scope.detailfavored=false
+    $scope.fid=new Array()
+    $scope.jd=false
+    var isempty=false
+    hide('tc')
+    hide('details')
+
+
+    getall()
+    // console.log($scope.favstorage)
+
+// search
     $scope.reset=function (){
         $scope.keyword =""
-        hide('tc')
-        hide('details')
         $scope.users=""
         $scope.pages=""
         $scope.events=""
@@ -42,26 +60,6 @@ app.controller('fbController', function($scope,$http) {
         $scope.detailname=""
         $scope.jd=false
     }
-    $scope.favstorage=new Array()
-    $scope.fall=""
-
-    //details
-    $scope.albums=""
-    $scope.posts=""
-    $scope.detailid=""
-    $scope.detailtype=""
-    $scope.detailpicurl=""
-    $scope.detailname=""
-    // $scope.detailfavored=false
-    $scope.fid=new Array()
-    $scope.jd=false
-    var isempty=false
-
-
-    getall()
-    // console.log($scope.favstorage)
-
-// search
     function setdefault() {
         $scope.jd=false
 
@@ -74,14 +72,9 @@ app.controller('fbController', function($scope,$http) {
         document.getElementById(id).style.display='none'
 
     }
-    // $scope.sinvalid=function () {
-    //     // hide('progressbar')
-    //     // hide('tc')
-    //     // isempty=true
-    // }
+
 
     function parseData(data) {
-//            console.log(data)
         var temp=Array()
         var len=data.length;
         var len2=$scope.fid.length;
@@ -106,7 +99,6 @@ app.controller('fbController', function($scope,$http) {
     }
 
     function parseData2(data) {
-        // console.log(data)
         var temp=Array()
         var len=data.length;
         for (var i=0;i<len;i++){
@@ -123,7 +115,6 @@ app.controller('fbController', function($scope,$http) {
     }
 
     $scope.search=function () {
-        // if (isempty){
         setdefault()
         if($scope.keyword!=""){
         hide('tc')
@@ -132,7 +123,6 @@ app.controller('fbController', function($scope,$http) {
             method: 'GET',
             url: 'fb.php?&keyword='+$scope.keyword+'&lat='+$scope.lat+'&long='+$scope.long
         }).then(function successCallback(response) {
-//                console.log(response['data']['user']['data'])
             $scope.users=parseData(response['data']['user']['data'])
             $scope.events=parseData(response['data']['event']['data'])
             $scope.pages=parseData(response['data']['page']['data'])
@@ -525,8 +515,7 @@ app.controller('fbController', function($scope,$http) {
         $scope.detailtype=type
         $scope.detailpicurl=picurl
         $scope.detailname=name
-        // console.log($scope.fid)
-        // console.log(id)
+
         $scope.detailfavored=false
         for (var i=0;i<$scope.fid.length;i++){
             // console.log($scope.fid[i])
@@ -596,11 +585,6 @@ app.controller('fbController', function($scope,$http) {
 
             }
             else $scope.posts=""
-            // console.log($scope.posts)
-
-
-            // hide('progressbar')
-            // show('tc')
         }, function errorCallback(response) {
             $scope.posts=""
             $scope.albums=""
@@ -617,7 +601,7 @@ app.controller('fbController', function($scope,$http) {
 
     $scope.shareFB=function () {
         FB.init({
-            appId: '1841405776135087', // App ID : Insert the APP ID of the APP you created here
+            appId: '1841405776135087',
             status: true,
             xfbml : true,
         });
